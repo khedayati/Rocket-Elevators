@@ -10,6 +10,8 @@
  // });
 
 $(function showSelectedValue(source){
+    
+    console.log("TOTO");
     var value = source;
     console.log(value);
     //html_options = {:onchange => "updateTextArea(this.value)"}

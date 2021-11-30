@@ -18,7 +18,9 @@ class InterventionsController < InheritedResources::Base
     #@buildings = Building.all
     @buildings = Building.where(customerId: params[:customer_id])
 
+    byebug
     customer_buildings = Building.where(customer_id: _id)
+    
 
     respond_to do |format|
       format.json { render :json => @customer_buildings }

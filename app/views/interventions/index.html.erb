@@ -50,7 +50,7 @@
           // call ajax
           var ajax = new XMLHttpRequest();
           var method = "GET";
-          var url = "interventions";
+          var url = "/interventions";
           var asynchronous = true;
 
           ajax.open(method, url, asynchronous);
@@ -81,6 +81,7 @@
                     //html += "<td>" + jobTitle + "</td>";
                     //html += "</tr>";
                 }
+                //renvoie nom customer
 
                 // replacing the <tbody> of <table>
                 //document.getElementById("data").innerHTML = html;
@@ -106,7 +107,7 @@
             <td><!-- %= intervention.report % --></td>
             <td><!-- %= intervention.status % --></td>
             <td><!-- %= link_to 'Show', intervention % --></td>
-            <td><!-- %= link_to 'Edit', edit_intervention_path(intervention) %> --</td>
+            <td><!-- %= link_to 'Edit', edit_intervention_path(intervention) %--></td>
             <td><!-- %= link_to 'Destroy', intervention, method: :delete, data: { confirm: 'Are you sure?' } % --></td>
           </tr>
         <!-- % end % -->
