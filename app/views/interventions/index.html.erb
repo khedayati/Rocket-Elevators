@@ -1,14 +1,5 @@
 <p id="notice"><%= notice %></p>
 
-<script defer>
-$(function showSelectedValue(source){
-    console.log("TOTO");
-    var value = source;
-    console.log(value);
-    //html_options = {:onchange => "updateTextArea(this.value)"}
-    //$()
-});
-</script>
 <section id="quote">
   <div class="container">
     <header class="text-center mb-60">
@@ -46,6 +37,7 @@ $(function showSelectedValue(source){
 
       <% if !@interventions.nil?  %>
         <%= collection_select(:customers, :customer, Customer.all, :id, :company_name, options = {include_blank: "Please select a source..."}, html_options = {:onchange => "showSelectedValue(this.value)"}) %>
+        
         </br></br>
         <!-- %= f.collection_select(:index, Customer.all, :id, :company_name, options = {include_blank: "Please select a source..."},
         html_options = {:onchange => "updateTextArea(this.value)"}) % -->
@@ -56,10 +48,22 @@ $(function showSelectedValue(source){
 
         <script>
           // call ajax
-/*
+
           var ajax = new XMLHttpRequest();
           var method = "GET";
-          var url = "/interventions";
+          var data = {};
+          data[0] = html_options;
+          $.ajax({
+            type: 'GET',
+            url: "/get_buildings/data[0]",
+            data: data,
+            success: function(data, status){
+              alert("Data: " + data + "\nStatus: " + status);
+            }
+
+          });
+/*
+          var url = "/get_buildings/{html_options}";
           var asynchronous = true;
 
           ajax.open(method, url, asynchronous);
@@ -97,6 +101,7 @@ $(function showSelectedValue(source){
             }
           }
 */
+
         </script>
 
 

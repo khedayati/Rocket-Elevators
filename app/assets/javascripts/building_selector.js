@@ -19,6 +19,7 @@ $(window.showSelectedValue = function(source){
 
     var value = source;
     console.log(value);
+    return value;
     //html_options = {:onchange => "updateTextArea(this.value)"}
     //$()
 });

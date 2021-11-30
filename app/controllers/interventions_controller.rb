@@ -12,6 +12,22 @@ class InterventionsController < InheritedResources::Base
 
 
 
+  def get_buildings(idOfCustomer)
+    @interventions = Intervention.all
+    #@customers = Customer.all
+    #@buildings = Building.all
+    @buildings = Building.where(customerId: params[:customer_id])
+
+    #byebug
+    customer_buildings = Building.where(customer_id: idOfCustomer)
+    
+    respond_to do |format|
+      format.json { render :json => @customer_buildings }
+    end
+
+  end
+
+
   def interventions(_id)
     @interventions = Intervention.all
     @customers = Customer.all
@@ -48,7 +64,7 @@ class InterventionsController < InheritedResources::Base
   private
 
     def intervention_params
-      params.require(:intervention).permit(:author, :customerId, :buildingId, :batteryId, :columnId, :elevatorId, :employeeId, :start_date, :end_date, :result, :report, :status)
+      params.permit(:author, :customerId, :buildingId, :batteryId, :columnId, :elevatorId, :employeeId, :start_date, :end_date, :result, :report, :status)
     end
-
+    # .require(:intervention)
 end
