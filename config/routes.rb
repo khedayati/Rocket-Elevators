@@ -21,6 +21,6 @@ Rails.application.routes.draw do
   # get '/audio', to: 'admin/dashboard#file'
 
   get 'admin/ibm_call' => 'admin/dashboard#ibm_call'
-  
+  get '/get_buildings/:idOfCustomer', to: 'interventions#get_buildings'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

@@ -11,31 +11,34 @@ class InterventionsController < InheritedResources::Base
   end
 
 
-
-  def get_buildings(idOfCustomer)
+  # (idOfCustomer)
+  def get_buildings
     @interventions = Intervention.all
     #@customers = Customer.all
     #@buildings = Building.all
-    @buildings = Building.where(customerId: params[:customer_id])
+    #@buildings = Building.where(customerId: params[:customer_id])
 
     #byebug
-    customer_buildings = Building.where(customer_id: idOfCustomer)
+    #customer_buildings = Building.where(customer_id: @buildings)
+    #customer_buildings = Building.where(customer_id: idOfCustomer) #
     
-    respond_to do |format|
-      format.json { render :json => @customer_buildings }
-    end
-
+    #respond_to do |format|
+    #  format.json { render json:  @customer_buildings }
+    #end
+    #@buildings = User.where(params[:id])
+    @buildings = Building.where(customer_id: params[:idOfCustomer])
+    render json: @buildings
   end
 
-
-  def interventions(_id)
+  # (_id)
+  def interventions
     @interventions = Intervention.all
     @customers = Customer.all
     #@buildings = Building.all
     @buildings = Building.where(customerId: params[:customer_id])
 
-    byebug
-    customer_buildings = Building.where(customer_id: _id)
+    #byebug
+    customer_buildings = Building.where(customer_id: 3)
     
 
     respond_to do |format|

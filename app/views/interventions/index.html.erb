@@ -37,7 +37,7 @@
 
       <% if !@interventions.nil?  %>
         <%= collection_select(:customers, :customer, Customer.all, :id, :company_name, options = {include_blank: "Please select a source..."}, html_options = {:onchange => "showSelectedValue(this.value)"}) %>
-        
+        <!-- %= f.collection_select % -->
         </br></br>
         <!-- %= f.collection_select(:index, Customer.all, :id, :company_name, options = {include_blank: "Please select a source..."},
         html_options = {:onchange => "updateTextArea(this.value)"}) % -->
@@ -48,20 +48,8 @@
 
         <script>
           // call ajax
+          // /data[0]
 
-          var ajax = new XMLHttpRequest();
-          var method = "GET";
-          var data = {};
-          data[0] = html_options;
-          $.ajax({
-            type: 'GET',
-            url: "/get_buildings/data[0]",
-            data: data,
-            success: function(data, status){
-              alert("Data: " + data + "\nStatus: " + status);
-            }
-
-          });
 /*
           var url = "/get_buildings/{html_options}";
           var asynchronous = true;
