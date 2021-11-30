@@ -37,12 +37,59 @@
     <%= form_for Intervention.new, method: :post, remote: true do |f| %>
 
       <% if !@interventions.nil?  %>
-        <%= collection_select(:customers, :customer, Customer.all, :id, :company_name) %>
+        <%= collection_select(:customers, :customer, Customer.all, :id, :company_name, options = {include_blank: "Please select a source..."}) %>
+        </br></br>
         <!-- %= f.collection_select(:index, Customer.all, :id, :company_name, options = {include_blank: "Please select a source..."},
         html_options = {:onchange => "updateTextArea(this.value)"}) % -->
-        <%= collection_select(:buildings, :building, Building.all, :id, :customer_id) %>
+        
         <!-- %= collection_select(:source, :index, @sources, :id, :name, options = {include_blank: "Please select a source..."}, html_options = {:onchange => "updateTextArea(this.value)"}) % -->
         <!-- %= render 'form', intervention: @intervention % -->
+
+
+        <script>
+          // call ajax
+          var ajax = new XMLHttpRequest();
+          var method = "GET";
+          var url = "interventions";
+          var asynchronous = true;
+
+          ajax.open(method, url, asynchronous);
+          // sending ajax request
+          ajax.send();
+
+          // receiving response from data.php
+          ajax.onreadystatechange = function() {
+            if (this.readyState == 4  && this.status == 200) {
+                //alert(this.responseText);
+                // converting JSON back to array
+                var data = JSON.parse(this.responseText);
+                console.log(data); // for debugging
+
+                // html value for <tbody>
+                var html = "";
+                // looping through the data
+                for (var a = 0; a < data.length; a++) {
+                    var firstName = data[a].firstName;
+                    var lastName = data[a].lastName;
+                    var jobTitle = data[a].jobTitle;
+
+                    // appending at html
+                    html += "<tr>";
+                    html += "<td>" + firstName + "</td>";
+                    html += "<td>" + lastName + "</td>";
+                    html += "<td>" + jobTitle + "</td>";
+                    html += "</tr>";
+                }
+
+                // replacing the <tbody> of <table>
+                document.getElementById("data").innerHTML = html;
+            }
+          }
+        </script>
+
+
+        <%= collection_select(:buildings, :building, Building.all, :id, :customer_id) %>
+
         <% @interventions.each do |intervention| %>
           <tr>
             <td><%= intervention.author %></td>

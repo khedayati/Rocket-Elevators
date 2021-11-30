@@ -9,6 +9,14 @@ class InterventionsController < InheritedResources::Base
   def show
     @intervention = Intervention.new
   end
+
+
+
+  def interventions
+    @interventions = Intervention.all
+    @customers = Customer.all
+    @buildings = Building.all
+  end
   
   # GET /interventions/new
   def new
