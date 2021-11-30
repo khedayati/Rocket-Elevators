@@ -32,29 +32,38 @@
 
   <tbody>
 
-    <% if !@interventions.nil?  %>
-      <%= collection_select(:customers, :customer, Customer.all, :id, :company_name) %>
-      <%= collection_select(:buildings, :building, Building.all, :id, :customer_id) %>
-      <!--%= render 'form', intervention: @intervention %-->
-      <% @interventions.each do |intervention| %>
-        <tr>
-          <td><%= intervention.author %></td>
-          <td><%= intervention.customerId %></td>
-          <td><%= intervention.buildingId %></td>
-          <td><%= intervention.batteryId %></td>
-          <td><%= intervention.columnId %></td>
-          <td><%= intervention.elevatorId %></td>
-          <td><%= intervention.employeeId %></td>
-          <td><%= intervention.start_date %></td>
-          <td><%= intervention.end_date %></td>
-          <td><%= intervention.result %></td>
-          <td><%= intervention.report %></td>
-          <td><%= intervention.status %></td>
-          <td><%= link_to 'Show', intervention %></td>
-          <td><%= link_to 'Edit', edit_intervention_path(intervention) %></td>
-          <td><%= link_to 'Destroy', intervention, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        </tr>
+    <!--%= form_with(model: @interventions, remote: true) do |f| %-->
+    <!-- %= form_for @intervention, remote: true do |f| % -->
+    <%= form_for Intervention.new, method: :post, remote: true do |f| %>
+
+      <% if !@interventions.nil?  %>
+        <%= collection_select(:customers, :customer, Customer.all, :id, :company_name) %>
+        <!-- %= f.collection_select(:index, Customer.all, :id, :company_name, options = {include_blank: "Please select a source..."},
+        html_options = {:onchange => "updateTextArea(this.value)"}) % -->
+        <%= collection_select(:buildings, :building, Building.all, :id, :customer_id) %>
+        <!-- %= collection_select(:source, :index, @sources, :id, :name, options = {include_blank: "Please select a source..."}, html_options = {:onchange => "updateTextArea(this.value)"}) % -->
+        <!-- %= render 'form', intervention: @intervention % -->
+        <% @interventions.each do |intervention| %>
+          <tr>
+            <td><%= intervention.author %></td>
+            <td><%= intervention.customerId %></td>
+            <td><%= intervention.buildingId %></td>
+            <td><%= intervention.batteryId %></td>
+            <td><%= intervention.columnId %></td>
+            <td><%= intervention.elevatorId %></td>
+            <td><%= intervention.employeeId %></td>
+            <td><%= intervention.start_date %></td>
+            <td><%= intervention.end_date %></td>
+            <td><%= intervention.result %></td>
+            <td><%= intervention.report %></td>
+            <td><%= intervention.status %></td>
+            <td><%= link_to 'Show', intervention %></td>
+            <td><%= link_to 'Edit', edit_intervention_path(intervention) %></td>
+            <td><%= link_to 'Destroy', intervention, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          </tr>
+        <% end %>
       <% end %>
+
     <% end %>
   </tbody>
 </table>
@@ -69,5 +78,6 @@
 </section>
 
 <br>
-
+<%= javascript_include_tag 'building_selector' %>
+<!-- script></script -->
 <%= link_to 'New Intervention', new_intervention_path %>

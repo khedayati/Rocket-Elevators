@@ -6,7 +6,9 @@ class InterventionsController < InheritedResources::Base
   end
   
   # GET /interventions/1 or /interventions/1.json
-  def show; end
+  def show
+    @intervention = Intervention.new
+  end
   
   # GET /interventions/new
   def new
