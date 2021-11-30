@@ -26,6 +26,10 @@ class InterventionsController < InheritedResources::Base
   end
   
   
+  # GET /interventions/
+  def submit
+    
+  end
   #def name_with_initial
   #  "#{first_name.first}. #{last_name}"
   #end
