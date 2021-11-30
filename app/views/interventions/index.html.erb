@@ -1,6 +1,14 @@
 <p id="notice"><%= notice %></p>
 
-
+<script defer>
+$(function showSelectedValue(source){
+    console.log("TOTO");
+    var value = source;
+    console.log(value);
+    //html_options = {:onchange => "updateTextArea(this.value)"}
+    //$()
+});
+</script>
 <section id="quote">
   <div class="container">
     <header class="text-center mb-60">
@@ -48,6 +56,7 @@
 
         <script>
           // call ajax
+/*
           var ajax = new XMLHttpRequest();
           var method = "GET";
           var url = "/interventions";
@@ -87,6 +96,7 @@
                 //document.getElementById("data").innerHTML = html;
             }
           }
+*/
         </script>
 
 
@@ -125,6 +135,7 @@
 
 
         <script>
+/*
           // call ajax
           var ajax = new XMLHttpRequest();
           var method = "GET";
@@ -154,6 +165,7 @@
                 //document.getElementById("data").innerHTML = html;
             }
           }
+*/
         </script>
 
 

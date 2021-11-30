@@ -9,9 +9,14 @@
     //your code goes here
  // });
 
-$(function showSelectedValue(source){
-    
+$(window.showSelectedValue = function(source){
+
     console.log("TOTO");
+
+
+    
+
+
     var value = source;
     console.log(value);
     //html_options = {:onchange => "updateTextArea(this.value)"}
