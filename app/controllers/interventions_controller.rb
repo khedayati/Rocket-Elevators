@@ -12,14 +12,16 @@ class InterventionsController < InheritedResources::Base
 
 
 
-  def interventions
+  def interventions(_id)
     @interventions = Intervention.all
     @customers = Customer.all
     #@buildings = Building.all
     @buildings = Building.where(customerId: params[:customer_id])
 
+    customer_buildings = Building.where(customer_id: _id)
+
     respond_to do |format|
-      format.json { render :json => @buildings }
+      format.json { render :json => @customer_buildings }
     end
 
   end
@@ -27,8 +29,6 @@ class InterventionsController < InheritedResources::Base
   # GET /interventions/new
   def new
     @intervention = Intervention.new
-    #@customers = Customer.all.collect { |c| [ c.full_name_of_the_company_contact, c.id ] }
-    #@buildings = Building.all.collect { |b| [ b.full_name_of_the_building_administrator, c.id ] }
   end
   
   
