@@ -15,7 +15,13 @@ class InterventionsController < InheritedResources::Base
   def interventions
     @interventions = Intervention.all
     @customers = Customer.all
-    @buildings = Building.all
+    #@buildings = Building.all
+    @buildings = Building.where(customerId: params[:customer_id])
+
+    respond_to do |format|
+      format.json { render :json => @buildings }
+    end
+
   end
   
   # GET /interventions/new
@@ -28,7 +34,7 @@ class InterventionsController < InheritedResources::Base
   
   # GET /interventions/
   def submit
-    
+
   end
   #def name_with_initial
   #  "#{first_name.first}. #{last_name}"
