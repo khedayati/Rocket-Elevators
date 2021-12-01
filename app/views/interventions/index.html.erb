@@ -15,8 +15,7 @@
     <%= form_for @intervention.to_s, method: :post, remote: true do |f| %>
     <!-- %= form_for Intervention.new, method: :post, remote: true do |f| % -->
       <% if !@interventions.nil?  %>
-        <!-- %= collection_select(:customers, :customer, Customer.all, :id, :company_name, options = {include_blank: "Please select a source..."}, html_options = {:onchange => "showSelectedValue(this.value)"}) %-->
-        <!-- %= f.collection_select % -->
+        
         </br></br>
         <%= f.label :building_id, 'Building' %>
         <fieldset id="fieldsetId">
@@ -32,7 +31,7 @@
         <div class="row">
           <div id="buildings_id1" class="col-md-10 col-sm-10" hidden="">
             <%= f.collection_select(:build_select, Building.all, :id, :full_name_of_the_building_administrator, options = {include_blank: "Please select a source..."}) %> 
-          <!-- %= f.collection_select(:build_select, Building.all, :id, :full_name_of_the_building_administrator, :hidden, options = {include_blank: "Please select a source..."}) % -->
+          
           </div>
         </div>
         </fieldset>

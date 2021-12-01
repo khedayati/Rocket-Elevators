@@ -3,7 +3,12 @@ $(window.showSelectedValue = function(source){
   
   $('#col_select').change(function() {
     console.log("VALUE ON CHANGE = ", this.value);
-    $('#buildings_id1').show();
+    //$('#buildings_id1').show();
+    console.log($('#buildings_id1').attr('id'));
+    console.log($('#buildings_id1').get(0).id);
+    console.log($('#buildings_id1').prop('id'));
+    $('#buildings_id1').removeAttr('hidden');
+    $(this).next("div").toggle(); 
   });
   
   var data = {};
