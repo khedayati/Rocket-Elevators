@@ -5,7 +5,7 @@
     <header class="text-center mb-60">
       <h1>Interventions</h1>
     </header>
-    <div name="interventionz">
+    <div class="interventionz">
     
       <!-- div class="row" -->
 
@@ -15,22 +15,24 @@
     <!--%= form_with(model: @interventions, remote: true) do |f| %-->
     <%= form_for @intervention.to_s, method: :post, remote: true do |f| %>
     <!-- %= form_for Intervention.new, method: :post, remote: true do |f| % -->
-    <fieldset id="fieldsetId">
+    
 
       <% if !@interventions.nil?  %>
         <!-- %= collection_select(:customers, :customer, Customer.all, :id, :company_name, options = {include_blank: "Please select a source..."}, html_options = {:onchange => "showSelectedValue(this.value)"}) %-->
         <!-- %= f.collection_select % -->
         </br></br>
-        <%= f.collection_select(:id, Customer.all, :id, :company_name, options = {include_blank: "Please select a source..."}, html_options = {:onchange => "showSelectedValue(this.value)"}) %>
+        <fieldset id="fieldsetId">
+          <%= f.collection_select(:col_select, Customer.all, :id, :company_name, options = {include_blank: "Please select a source..."}, html_options = {:onchange => "showSelectedValue(this.value)"}) %>
 
-    </fieldset>
+    
 
-      
+        </fieldset>
       </br></br>
-      <%= submit_tag "Submit", id:"submit", class:"btn btn-primary" %>
+      
       <!-- %= link_to 'Submit', intervention % -->
       <% end %>
 
+      <%= submit_tag "Submit", id:"submit", class:"btn btn-primary" %>
     <% end %>
   </tbody>
 </table>
