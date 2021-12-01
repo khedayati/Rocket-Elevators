@@ -37,7 +37,7 @@ $(window.showSelectedValue = function(source){
           //divIn.setAttribute("id", rowNameId);
           //document.getElementsByTagName("fieldset").item(0).appendChild(divIn);
           //document.getElementById("buildings_building").value = data[0].full_name_of_the_building_administrator;
-          positionOfTagStr = "first";
+          var positionOfTagStr = [ "first", "second" ];
           console.log("data.length = ", data.length);
           var divIn = document.createElement("div");
           //console.log("length id interventionz = ", document.getElementById("interventionz"));
@@ -52,17 +52,18 @@ $(window.showSelectedValue = function(source){
           firstInput.setAttribute("type", "number");
           firstInput.setAttribute("class", "form-control");
           firstInput.setAttribute("id", "5");
+          var inquiry_type = [ "customers_customer", "buildings_building" ];
           //document.getElementById("number_elevators").value = nElevatorsTotal;
           for (var i = 0; i < data.length; i++) {
-            var divIn = document.createElement("div");
-            divIn.setAttribute("class", "row");
-            var rowNameId = "first_rowId";
-            //var rowNameId = positionOfTagStr + "_rowId";
-            divIn.setAttribute("id", rowNameId);
-            //document.getElementById("interventionz").item(0).appendChild(divIn);
-            document.getElementsByTagName("fieldset").item(0).appendChild(divIn);
-            //document.getElementsByTagName("container").item(0).appendChild(divIn);
-            //divIn.setAttribute("id", rowNameId);
+            //var divIn = document.createElement("div");
+            var select_element = document.createElement("select");
+            //divIn.setAttribute("class", "row");
+            //var rowNameId = positionOfTagStr[0] + "_rowId";
+            select_element.setAttribute("id", inquiry_type[0]);
+            
+            document.getElementsByTagName("fieldset").item(0).appendChild(select_element);
+            
+            
           }
           //document.getElementById("buildings_building").innerHTML = data[0].full_name_of_the_building_administrator;
           //document.getElementById("customers_customer").innerHTML = html;
