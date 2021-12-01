@@ -7,116 +7,23 @@
     </header>
     <div name="interventionz">
     
-      <div class="row">
+      <!-- div class="row" -->
 
         <!-- FORM -->
-        <div class="col-md-8 col-sm-8">
-
-<!--table>
-  <thead>
-    <tr>
-      <th>Author</th>
-      <th>Customerid</th>
-      <th>Buildingid</th>
-      <th>Batteryid</th>
-      <th>Columnid</th>
-      <th>Elevatorid</th>
-      <th>Employeeid</th>
-      <th>Start date</th>
-      <th>End date</th>
-      <th>Result</th>
-      <th>Report</th>
-      <th>Status</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody-->
+        <!-- div class="col-md-8 col-sm-8" -->
 
     <!--%= form_with(model: @interventions, remote: true) do |f| %-->
-    <!-- %= form_for @intervention, remote: true do |f| % -->
-    <%= form_for Intervention.new, method: :post, remote: true do |f| %>
+    <%= form_for @intervention.to_s, method: :post, remote: true do |f| %>
+    <!-- %= form_for Intervention.new, method: :post, remote: true do |f| % -->
     <fieldset id="fieldsetId">
 
       <% if !@interventions.nil?  %>
-        <%= collection_select(:customers, :customer, Customer.all, :id, :company_name, options = {include_blank: "Please select a source..."}, html_options = {:onchange => "showSelectedValue(this.value)"}) %>
+        <!-- %= collection_select(:customers, :customer, Customer.all, :id, :company_name, options = {include_blank: "Please select a source..."}, html_options = {:onchange => "showSelectedValue(this.value)"}) %-->
         <!-- %= f.collection_select % -->
         </br></br>
-        <!-- %= f.collection_select(:index, Customer.all, :id, :company_name, options = {include_blank: "Please select a source..."},
-        html_options = {:onchange => "updateTextArea(this.value)"}) % -->
-        
-        <!-- %= collection_select(:source, :index, @sources, :id, :name, options = {include_blank: "Please select a source..."}, html_options = {:onchange => "updateTextArea(this.value)"}) % -->
-        <!-- %= render 'form', intervention: @intervention % -->
+        <%= f.collection_select(:id, Customer.all, :id, :company_name, options = {include_blank: "Please select a source..."}, html_options = {:onchange => "showSelectedValue(this.value)"}) %>
 
     </fieldset>
-        <script>
-          // call ajax
-          // /data[0]
-
-/*
-          var url = "/get_buildings/{html_options}";
-          var asynchronous = true;
-
-          ajax.open(method, url, asynchronous);
-          // sending ajax request
-          ajax.send();
-
-          // receiving response from data.php
-          ajax.onreadystatechange = function() {
-            if (this.readyState == 4  && this.status == 200) {
-                alert(this.responseText);
-                // converting JSON back to array
-                var data = JSON.parse(this.responseText);
-                console.log(data); // for debugging
-
-                // html value for <tbody>
-                var html = "";
-                // looping through the data
-                for (var a = 0; a < data.length; a++) {
-                    console.log(data[a]);
-                    //var firstName = data[a].firstName;
-                    //var lastName = data[a].lastName;
-                    //var jobTitle = data[a].jobTitle;
-
-                    // appending at html
-                    //html += "<tr>";
-                    //html += "<td>" + firstName + "</td>";
-                    //html += "<td>" + lastName + "</td>";
-                    //html += "<td>" + jobTitle + "</td>";
-                    //html += "</tr>";
-                }
-                //renvoie nom customer
-
-                // replacing the <tbody> of <table>
-                //document.getElementById("data").innerHTML = html;
-            }
-          }
-*/
-
-        </script>
-
-
-        <!-- %= collection_select(:buildings, :building, Building.all, :id, :customer_id) % -->
-
-        <!-- % @interventions.each do |intervention| % -->
-          <tr>
-            <td><!-- %= intervention.author % --></td>
-            <td><!-- %= intervention.customerId % --></td>
-            <td><!-- %= intervention.buildingId % --></td>
-            <td><!-- %= intervention.batteryId % --></td>
-            <td><!-- %= intervention.columnId % --></td>
-            <td><!-- %= intervention.elevatorId % --></td>
-            <td><!-- %= intervention.employeeId % --></td>
-            <td><!-- %= intervention.start_date % --></td>
-            <td><!-- %= intervention.end_date % --></td>
-            <td><!-- %= intervention.result % --></td>
-            <td><!-- %= intervention.report % --></td>
-            <td><!-- %= intervention.status % --></td>
-            <td><!-- %= link_to 'Show', intervention % --></td>
-            <td><!-- %= link_to 'Edit', edit_intervention_path(intervention) %--></td>
-            <td><!-- %= link_to 'Destroy', intervention, method: :delete, data: { confirm: 'Are you sure?' } % --></td>
-          </tr>
-        <!-- % end % -->
 
       
       </br></br>
@@ -128,46 +35,9 @@
   </tbody>
 </table>
 
-
-
-        <script>
-/*
-          // call ajax
-          var ajax = new XMLHttpRequest();
-          var method = "GET";
-          var url = "interventions";
-          var asynchronous = true;
-
-          ajax.open(method, url, asynchronous);
-          // sending ajax request
-          ajax.send();
-
-          // receiving response from data.php
-          ajax.onreadystatechange = function() {
-            if (this.readyState == 4  && this.status == 200) {
-                alert(this.responseText);
-                // converting JSON back to array
-                var data = JSON.parse(this.responseText);
-                console.log(data); // for debugging
-
-                // html value for <tbody>
-                var html = "";
-                // looping through the data
-                for (var a = 0; a < data.length; a++) {
-                    console.log(data[a]);
-                }
-
-                // replacing the <tbody> of <table>
-                //document.getElementById("data").innerHTML = html;
-            }
-          }
-*/
-        </script>
-
-
         </div>
-      </div>
-      </div>
+      <!-- /div -->
+      <!-- /div -->
 
   </div>
 </section>

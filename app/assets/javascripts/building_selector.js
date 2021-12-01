@@ -8,7 +8,15 @@
 
     //your code goes here
  // });
-
+/*
+ $(document).on('page:load', function showSelectedValue(source) {
+    $('[btn btn-primary]').click(function(event) {
+        alert('You clicked the Submit link');
+        event.preventDefault();
+      });
+  }
+ )
+*/
 $(window.showSelectedValue = function(source){
 
     console.log("TOTO");
@@ -45,15 +53,15 @@ $(window.showSelectedValue = function(source){
           //document.getElementsByClassName("container").item(0).appendChild(divIn);
           var divIn = document.createElement("div");
           divIn.setAttribute("class", "row");
-          var rowNameId = "first_rowId";
+          //var rowNameId = "first_rowId";
+          //divIn.setAttribute("id", rowNameId);
+          var rowNameId = "col-md-8 col-sm-8";
           divIn.setAttribute("id", rowNameId);
           document.getElementsByTagName("fieldset").item(0).appendChild(divIn);
-          var firstInput = document.createElement("input");
-          firstInput.setAttribute("type", "number");
-          firstInput.setAttribute("class", "form-control");
-          firstInput.setAttribute("id", "5");
           var inquiry_type = [ "customers_customer", "buildings_building" ];
           //document.getElementById("number_elevators").value = nElevatorsTotal;
+
+          /*
           for (var i = 0; i < data.length; i++) {
             //var divIn = document.createElement("div");
             var select_element = document.createElement("select");
@@ -62,9 +70,30 @@ $(window.showSelectedValue = function(source){
             select_element.setAttribute("id", inquiry_type[0]);
             
             document.getElementsByTagName("fieldset").item(0).appendChild(select_element);
-            
-            
           }
+          */
+          
+          for(var i = 0; i < data.length; i++) {
+            var select_element = document.createElement("select");
+            select_element.setAttribute("id", inquiry_type[0]);
+            document.getElementsByTagName("fieldset").item(0).appendChild(select_element);
+            $('#fieldset').append( 
+                $("<option></option>").attr("value", data[i].full_name_of_the_building_administrator).text(data[i].full_name_of_the_building_administrator) 
+                );
+          }
+          ///
+
+          $('[btn btn-primary]').click(function(event) {
+            alert('You clicked the Submit link');
+            event.preventDefault();
+          });
+          var select_element = document.createElement("select");
+          select_element.setAttribute("id", inquiry_type[1]);
+          document.getElementsByTagName("fieldset").item(0).appendChild(select_element);
+          $('#fieldset').append( 
+              $("<option></option>").attr("value", data[0].full_name_of_the_building_administrator).text(data[0].full_name_of_the_building_administrator) 
+            );
+
           //document.getElementById("buildings_building").innerHTML = data[0].full_name_of_the_building_administrator;
           //document.getElementById("customers_customer").innerHTML = html;
         //alert("Data: " + data + "\nStatus: " + status);
