@@ -30,6 +30,12 @@ class InterventionsController < InheritedResources::Base
     render json: @buildings
   end
 
+  #def get
+  #  @interventions = Intervention.all
+  #  @buildings = Building.where(customer_id: params[:idOfCustomer])
+  #  render json: @buildings
+  #end
+
   # (_id)
   def interventions
     @interventions = Intervention.all
