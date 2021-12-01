@@ -17,58 +17,23 @@ $(window.showSelectedValue = function(source){
       data: data,
       success: function(data, status){
         console.log("source = ", source);
-        //console.log(data);
+        console.log(data);
         console.log("data[0]['full_name_of_the_building_administrator'] = ", data[0]['full_name_of_the_building_administrator']);
   
-        var array = [];
-        
+        var array = [];        
         //$("#buildings_id1").empty();
         var key_out = [];
 
 
         for (var i = 0; i < data.length; i++) {
+          if (i == 0) {
+            $('#build_select').find('option').not(':first').remove();
+          }
           $('#build_select').append($('<option/>', { 
             key: data[i].id,
-            text : data[i].full_name_of_the_building_administrator 
+            text : data[i].full_name_of_the_building_administrator
           }));
         }
-/*
-        $.each(data, function(key, value)
-        {
-          console.log("value.full_name_of_the_building_administrator = ", value.full_name_of_the_building_administrator);
-          console.log("value.id = ", value.id);
-            //key_out += key.id;
-
-            //$("#build_select").append('<option value=' + key.id + '>' + value.full_name_of_the_building_administrator + '</option>');
-            //$('#build_select').each(function() {
-            //  if ( $(this).val() != key.id ) {
-            //      $(this).remove();
-            //  }
-            //});
-        });
-*/
-                //$("#buildings_id1").empty();
-/*
-        $.each(data, function()
-        {
-          //console.log("value.full_name_of_the_building_administrator = ", value.full_name_of_the_building_administrator);
-          //console.log("value.id = ", value.id);
-            //$("#build_select").append('<option value=' + key.id + '>' + value.full_name_of_the_building_administrator + '</option>');
-            $('#build_select').each(function() {
-              if ( $(this).val() != key_out ) {
-                  $(this).remove();
-              }
-            });
-        });
-  */      
-        /*
-        for (var i = 0; i < data.length; i++) {
-          $("#build_select").append("<option value=" + data[i].id + ">" + data[i].full_name_of_the_building_administrator + "</option>") ;
-        }
-        */
-        //var $el = $("#buildings_id1");
-        //$el.append($("<option></option>"));
-          //$('#col_select').html
       }
     });
   });
