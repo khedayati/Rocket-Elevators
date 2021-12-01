@@ -1,5 +1,29 @@
 $(window.showSelectedValue = function(source){
 
+  
+  $('#col_select').change(function() {
+    console.log("VALUE ON CHANGE = ", this.value);
+    $('#buildings_id1').show();
+  });
+  
+  var data = {};
+  console.log("source = ", source);
+  $.ajax({
+    dataType: 'json',
+    url: "/get_buildings/" + source,
+    data: data,
+    success: function(data, status){
+      console.log("source = ", source);
+      console.log(data);
+      console.log("data[0]['full_name_of_the_building_administrator'] = ", data[0]['full_name_of_the_building_administrator']);
+
+      var $el = $("#col_select");
+      $el.append($("<option></option>"));
+        //$('#col_select').html
+    }
+  });
+
+/*
     console.log("showSelectedValue");
     var ajax = new XMLHttpRequest();
     var method = "GET";
@@ -28,9 +52,10 @@ $(window.showSelectedValue = function(source){
 
       }});
 
-    
+    */
 
     var value = source;
     //console.log(value);
     return value;
 });
+

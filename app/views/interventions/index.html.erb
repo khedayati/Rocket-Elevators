@@ -23,8 +23,7 @@
         <div class="row">
           <div class="col-md-10 col-sm-10">
             <%= f.collection_select(:col_select, Customer.all, :id, :company_name, options = {include_blank: "Please select a source..."}, html_options = {:onchange => "showSelectedValue(this.value)"})  %>
-            <!-- ,
-               -->
+
           
           </div>
         </div>
@@ -32,7 +31,6 @@
 
         <div class="row">
           <div id="buildings_id1" class="col-md-10 col-sm-10" hidden="">
-
             <%= f.collection_select(:build_select, Building.all, :id, :full_name_of_the_building_administrator, options = {include_blank: "Please select a source..."}) %> 
           <!-- %= f.collection_select(:build_select, Building.all, :id, :full_name_of_the_building_administrator, :hidden, options = {include_blank: "Please select a source..."}) % -->
           </div>
@@ -53,11 +51,12 @@
 <!-- /section -->
 
 <script>
+/*
   $('#col_select').change(function() {
       console.log("VALUE ON CHANGE = ", this.value);
       $('#buildings_id1').show();
     });
-/*
+
   $('#col_select').on("change").function() {
 
     $('#buildings_id').show();
