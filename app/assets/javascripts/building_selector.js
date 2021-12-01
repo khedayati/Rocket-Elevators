@@ -24,11 +24,8 @@ $(window.showSelectedValue = function(source){
         //$("#buildings_id1").empty();
         var key_out = [];
 
-
+        $('#build_select').find('option').not(':first').remove();
         for (var i = 0; i < data.length; i++) {
-          if (i == 0) {
-            $('#build_select').find('option').not(':first').remove();
-          }
           $('#build_select').append($('<option/>', { 
             key: data[i].id,
             text : data[i].full_name_of_the_building_administrator
