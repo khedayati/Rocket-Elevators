@@ -2,31 +2,37 @@ $(window.showSelectedValue = function(source){
 
   
   $('#col_select').change(function() {
-    console.log("VALUE ON CHANGE = ", this.value);
+    //console.log("VALUE ON CHANGE = ", this.value);
     //$('#buildings_id1').show();
-    console.log($('#buildings_id1').attr('id'));
-    console.log($('#buildings_id1').get(0).id);
-    console.log($('#buildings_id1').prop('id'));
+    //console.log($('#buildings_id1').attr('id'));
+    //console.log($('#buildings_id1').get(0).id);
+    //console.log($('#buildings_id1').prop('id'));
     $('#buildings_id1').removeAttr('hidden');
     $(this).next("div").toggle(); 
+    var data = {};
+    console.log("source = ", source);
+    $.ajax({
+      dataType: 'json',
+      url: "/get_buildings/" + source,
+      data: data,
+      success: function(data, status){
+        console.log("source = ", source);
+        console.log(data);
+        console.log("data[0]['full_name_of_the_building_administrator'] = ", data[0]['full_name_of_the_building_administrator']);
+  
+        var array = [];
+        $("#buildings_id1").empty()
+        for (var i = 0; i < data.length; i++) {
+          $("#buildings_id1").append("<option value=" + data[i].id + ">" + data[i].full_name_of_the_building_administrator + "</option>") ;
+        }
+        //var $el = $("#buildings_id1");
+        //$el.append($("<option></option>"));
+          //$('#col_select').html
+      }
+    });
   });
   
-  var data = {};
-  console.log("source = ", source);
-  $.ajax({
-    dataType: 'json',
-    url: "/get_buildings/" + source,
-    data: data,
-    success: function(data, status){
-      console.log("source = ", source);
-      console.log(data);
-      console.log("data[0]['full_name_of_the_building_administrator'] = ", data[0]['full_name_of_the_building_administrator']);
 
-      var $el = $("#col_select");
-      $el.append($("<option></option>"));
-        //$('#col_select').html
-    }
-  });
 
 /*
     console.log("showSelectedValue");
