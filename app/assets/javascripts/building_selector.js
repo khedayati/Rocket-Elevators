@@ -38,13 +38,14 @@ $(window.showSelectedValue = function(source){
   $('#build_select').change(function() {
     console.log("build_select changed");
     $('#batteries_id1').removeAttr('hidden');
+    var data = {};
     $.ajax({
       dataType: 'json',
       url: "/get_batteries/" + source,
       data: data,
       success: function(data, status){
         console.log("source = ", source);
-        console.log(data);
+        //console.log(data);
         console.log("data[0]['battery_type'] = ", data[0]['battery_type']);
   
         var array = [];        

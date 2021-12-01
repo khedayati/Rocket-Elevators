@@ -32,7 +32,7 @@ class InterventionsController < InheritedResources::Base
 
   def get_batteries
     @interventions = Intervention.all
-    @batteries = Batteries.where(building_id: params[:idOfBuilding])
+    @batteries = Battery.where(building_id: params[:idOfBuilding])
     render json: @batteries
   end
 
