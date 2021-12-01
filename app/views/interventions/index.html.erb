@@ -1,50 +1,91 @@
 <p id="notice"><%= notice %></p>
 
-<section id="quote">
-  <div class="container">
+<!-- section id="quote" -->
+  <!-- div class="container" -->
     <header class="text-center mb-60">
       <h1>Interventions</h1>
     </header>
-    <div class="interventionz">
+    <!-- div class="interventionz" -->
     
       <!-- div class="row" -->
 
         <!-- FORM -->
         <!-- div class="col-md-8 col-sm-8" -->
 
-    <!--%= form_with(model: @interventions, remote: true) do |f| %-->
     <%= form_for @intervention.to_s, method: :post, remote: true do |f| %>
     <!-- %= form_for Intervention.new, method: :post, remote: true do |f| % -->
-    
-
       <% if !@interventions.nil?  %>
         <!-- %= collection_select(:customers, :customer, Customer.all, :id, :company_name, options = {include_blank: "Please select a source..."}, html_options = {:onchange => "showSelectedValue(this.value)"}) %-->
         <!-- %= f.collection_select % -->
         </br></br>
+        <%= f.label :building_id, 'Building' %>
         <fieldset id="fieldsetId">
-          <%= f.collection_select(:col_select, Customer.all, :id, :company_name, options = {include_blank: "Please select a source..."}, html_options = {:onchange => "showSelectedValue(this.value)"}) %>
+        <div class="row">
+          <div class="col-md-10 col-sm-10">
+            <%= f.collection_select(:col_select, Customer.all, :id, :company_name, options = {include_blank: "Please select a source..."}, html_options = {:onchange => "showSelectedValue(this.value)"})  %>
+            <!-- ,
+               -->
+          
+          </div>
+        </div>
+        
 
-    
+        <div class="row">
+          <div id="buildings_id1" class="col-md-10 col-sm-10" hidden="">
 
+            <%= f.collection_select(:build_select, Building.all, :id, :full_name_of_the_building_administrator, options = {include_blank: "Please select a source..."}) %> 
+          <!-- %= f.collection_select(:build_select, Building.all, :id, :full_name_of_the_building_administrator, :hidden, options = {include_blank: "Please select a source..."}) % -->
+          </div>
+        </div>
         </fieldset>
-      </br></br>
+        </br></br>
       
-      <!-- %= link_to 'Submit', intervention % -->
       <% end %>
-
       <%= submit_tag "Submit", id:"submit", class:"btn btn-primary" %>
     <% end %>
-  </tbody>
-</table>
 
-        </div>
+
+    <!-- /div -->
       <!-- /div -->
       <!-- /div -->
 
-  </div>
-</section>
+  <!-- /div -->
+<!-- /section -->
 
-<br>
+<script>
+  $('#col_select').change(function() {
+      console.log("VALUE ON CHANGE = ", this.value);
+      $('#buildings_id1').show();
+    });
+/*
+  $('#col_select').on("change").function() {
+
+    $('#buildings_id').show();
+    console.log("showSelectedValue");
+
+    $.ajax({
+      dataType: 'json',
+      url: "/get_buildings/" + source,
+      data: data,
+      success: function(data, status){
+          console.log("source = ", source);
+          console.log(data);
+          console.log("data[0]['full_name_of_the_building_administrator'] = ", data[0]['full_name_of_the_building_administrator']);
+*/
+/*
+          var $el = $("#col_select");
+            //$el.empty(); // remove old options
+            //$.each(data, function(key, ) {
+            //$el.append($("<option></option>").attr("value", data[0].full_name_of_the_building_administrator).text(key));
+            $el.append($("<option></option>"));
+            $('#col_select').html
+          //});
+
+
+      }});
+  }
+  */
+</script>
+
 <%= javascript_include_tag 'building_selector' %>
-<!-- script></script -->
 <%= link_to 'New Intervention', new_intervention_path %>
