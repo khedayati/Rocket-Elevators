@@ -38,25 +38,25 @@ $(window.showSelectedValue = function(source){
   $('#build_select').change(function() {
     console.log("build_select changed");
     $('#batteries_id1').removeAttr('hidden');
-    var data = {};
+    var data2 = {};
     $.ajax({
       dataType: 'json',
       url: "/get_batteries/" + source,
-      data: data,
+      data3: data2,
       success: function(data, status){
         console.log("source = ", source);
         //console.log(data);
-        console.log("data[0]['battery_type'] = ", data[0]['battery_type']);
+        console.log("data[0]['battery_type'] = ", data3[0]['battery_type']);
   
         var array = [];        
         //$("#buildings_id1").empty();
         var key_out = [];
 
         $('#build_select').find('option').not(':first').remove();
-        for (var i = 0; i < data.length; i++) {
+        for (var i = 0; i < data3.length; i++) {
           $('#build_select').append($('<option/>', { 
-            key: data[i].id,
-            text : data[i].battery_type
+            key: data3[i].id,
+            text : data3[i].battery_type
           }));
         }
       }
