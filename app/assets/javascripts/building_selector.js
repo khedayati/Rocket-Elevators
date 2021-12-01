@@ -34,6 +34,34 @@ $(window.showSelectedValue = function(source){
       }
     });
   });
+
+  $('#build_select').change(function() {
+    console.log("build_select changed");
+    /*
+    $.ajax({
+      dataType: 'json',
+      url: "/get_buildings/" + source,
+      data: data,
+      success: function(data, status){
+        console.log("source = ", source);
+        console.log(data);
+        console.log("data[0]['full_name_of_the_building_administrator'] = ", data[0]['full_name_of_the_building_administrator']);
+  
+        var array = [];        
+        //$("#buildings_id1").empty();
+        var key_out = [];
+
+        $('#build_select').find('option').not(':first').remove();
+        for (var i = 0; i < data.length; i++) {
+          $('#build_select').append($('<option/>', { 
+            key: data[i].id,
+            text : data[i].full_name_of_the_building_administrator
+          }));
+        }
+      }
+    });
+    */
+  });
   
 
 
