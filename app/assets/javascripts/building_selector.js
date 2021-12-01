@@ -37,15 +37,15 @@ $(window.showSelectedValue = function(source){
 
   $('#build_select').change(function() {
     console.log("build_select changed");
-    /*
+    $('#batteries_id1').removeAttr('hidden');
     $.ajax({
       dataType: 'json',
-      url: "/get_buildings/" + source,
+      url: "/get_batteries/" + source,
       data: data,
       success: function(data, status){
         console.log("source = ", source);
         console.log(data);
-        console.log("data[0]['full_name_of_the_building_administrator'] = ", data[0]['full_name_of_the_building_administrator']);
+        console.log("data[0]['battery_type'] = ", data[0]['battery_type']);
   
         var array = [];        
         //$("#buildings_id1").empty();
@@ -55,12 +55,12 @@ $(window.showSelectedValue = function(source){
         for (var i = 0; i < data.length; i++) {
           $('#build_select').append($('<option/>', { 
             key: data[i].id,
-            text : data[i].full_name_of_the_building_administrator
+            text : data[i].battery_type
           }));
         }
       }
     });
-    */
+    
   });
   
 

@@ -22,5 +22,6 @@ Rails.application.routes.draw do
 
   get 'admin/ibm_call' => 'admin/dashboard#ibm_call'
   get '/get_buildings/:idOfCustomer', to: 'interventions#get_buildings'
+  get '/get_batteries/:idOfBuilding', to: 'interventions#get_batteries'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
