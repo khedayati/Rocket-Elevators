@@ -44,6 +44,17 @@
             <%= f.collection_select(:battery_select, Battery.all, :id, :battery_type, options = {include_blank: "Please select a source..."}) %> 
           </div>
         </div>
+
+
+        <div class="row">
+          <div id="columns_id1" class="col-md-10 col-sm-10" hidden="">
+            <%= f.label :column_id, 'Battery' %>
+            <br><br>
+            <%= f.collection_select(:column_select, Column.all, :id, :id, options = {include_blank: "Please select a source..."}) %> 
+          </div>
+        </div>
+
+
         </fieldset>
         <br><br>
       

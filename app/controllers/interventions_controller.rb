@@ -1,3 +1,6 @@
+require "net/http"
+require "uri"
+require "json"
 class InterventionsController < InheritedResources::Base
 
   # GET /interventions or /interventions.json
@@ -59,6 +62,34 @@ class InterventionsController < InheritedResources::Base
     @intervention = Intervention.new
   end
   
+
+    # POST /interventions or /interventions.json
+  def create
+    @intervention = Intervention.new(intervention_params)
+    respond_to do |format|
+      if @intervention.save
+        format.html { redirect_to root_path, notice: "Intervention was successfully created." }
+        format.json { render :show, status: :created, location: @intervention }
+      else
+        format.html { render :new, status: :unprocessable_entity }
+        format.json { render json: @intervention.errors, status: :unprocessable_entity }
+      end
+    end
+    puts "###########"
+    puts "@intervention.author "
+    puts @intervention.author
+    puts "@intervention.customerId "
+    puts @intervention.customerId
+    # puts @intervention.customerId
+    ZendeskAPI::Ticket.create!(@client,
+      :subject => "#{@intervention.customerId} from #{@intervention.author}",
+      :requester => {"name": @intervention.customerId},
+      :comment => { :value =>
+      "The contact #{@intervention.author} from company can be reached at #{@intervention.buildingId} and at #{@intervention.columnId}. #{@intervention.employeeId} has a project named #{@intervention.elevatorId} which would require contribution from Rocket Elevators.
+        Attached Message: #{@intervention.report}"},
+      :type => "question",
+      :priority => "urgent")
+  end
   
   # GET /interventions/
   def submit
