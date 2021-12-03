@@ -111,7 +111,7 @@ class InterventionsController < InheritedResources::Base
 
     puts "params"
     puts params
-    byebug
+    #byebug
 
     if @intervention.save
       puts "Successfully saved"
