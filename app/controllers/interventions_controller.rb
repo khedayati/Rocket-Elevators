@@ -90,7 +90,7 @@ class InterventionsController < InheritedResources::Base
       elevator_id: params[:elevator_id],
       author_id: current_user.employee[0].id
     )
-    if Intervention.save
+    if @intervention.save
       puts "Successfully saved"
     else
       puts "Not saved"
@@ -101,7 +101,19 @@ class InterventionsController < InheritedResources::Base
 
     # POST /interventions or /interventions.json
   def create
+
     @intervention = Intervention.new(intervention_params)
+
+
+    puts "params"
+    puts params
+
+    if @intervention.save
+      puts "Successfully saved"
+    else
+      puts "Not saved"
+    end
+
     respond_to do |format|
       if @intervention.save
         format.html { redirect_to root_path, notice: "Intervention was successfully created." }
@@ -116,10 +128,11 @@ class InterventionsController < InheritedResources::Base
     puts "###########"
     # puts @intervention.customerId
     ZendeskAPI::Ticket.create!(@client,
-      :subject => " from #{@customer.user_id}" ,
+      :subject => " from #{@customer.id}" ,
       :requester => {"name": @intervention.customer_id},
       :comment => { :value =>
-      "The contact  from company can be reached at  and at .  has a project named  which would require contribution from Rocket Elevators.
+      "Customer id: #{@customer.id},
+       Building id: 
         Attached Message: "},
       :type => "question",
       :priority => "urgent")
