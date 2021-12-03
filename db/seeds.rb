@@ -3964,6 +3964,34 @@ while $i < 100 do
     end
     $i += 1;
     user_progressbar.increment
+
 end
 
 
+#puts "Making Leads"
+
+#$j = 0
+#$num = 40
+#lead_progressbar = ProgressBar.create(:total => $num)
+#$i = 0
+#while $i < $num do
+  #if $i == 146
+    #Faker::UniqueGenerator.clear  
+  #end
+
+#  @interventions = Intervention.create!(
+#    intervention: @interventions,
+#    author_id: Faker::Name.unique.name,
+#    customer_id: Faker::Number.unique.between(from: 1, to: 300),
+#    building_id: Faker::Number.unique.between(from: 1, to: 300),
+#    battery_id: Faker::Number.unique.between(from: 1, to: 300),
+#    column_id:Faker::Number.unique.between(from: 1, to: 300),
+#    elevator_id: Faker::Number.unique.between(from: 1, to: 300),
+#    employee_id: Faker::Number.unique.between(from: 1, to: 300),
+#    start_date: Faker::Date.between(from: 730.days.ago, to: Date.today),
+#    end_date: Faker::Date.between(from: 730.days.ago, to: Date.today),
+#    result: Faker::Lorem.sentence(word_count: 1),
+#    report: Faker::Lorem.unique.sentence
+#    )
+  
+#end

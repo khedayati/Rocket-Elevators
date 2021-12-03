@@ -1,3 +1,6 @@
+require "net/http"
+require "uri"
+require "json"
 class InterventionsController < InheritedResources::Base
 
   # GET /interventions or /interventions.json
@@ -30,10 +33,24 @@ class InterventionsController < InheritedResources::Base
     render json: @buildings
   end
 
+  def get_columns
+    #@interventions = Intervention.all
+    @columns = Column.where(battery_id: params[:idOfColumn]) # idOfColumn columnId
+    render json: @columns
+    puts "COLUMNS"
+    puts @columns
+  end
+
   def get_batteries
     @interventions = Intervention.all
     @batteries = Battery.where(building_id: params[:idOfBuilding])
     render json: @batteries
+  end
+
+  def get_elevators
+    #@interventions = Intervention.all
+    @elevators = Elevator.where(column_id: params[:idOfElevator]) # idOfElevator elevatorId
+    render json: @elevators
   end
 
   # (_id)
@@ -41,6 +58,7 @@ class InterventionsController < InheritedResources::Base
     @interventions = Intervention.all
     @customers = Customer.all
     @customers = Battery.all
+    @employees = Employee.all
     #@buildings = Building.all
     @buildings = Building.where(customerId: params[:customer_id])
 
@@ -58,12 +76,54 @@ class InterventionsController < InheritedResources::Base
   def new
     @intervention = Intervention.new
   end
-  
-  
-  # GET /interventions/
+
   def submit
+    @intervention = Intervention.new(
+      customer_id: params[:customer_id],
+      building_id: params[:building_id],
+      battery_id: params[:battery_id],
+      column_id: params[:column_id],
+      employee_id: params[:employee_id],
+      elevator_id: params[:elevator_id],
+      author_id: current_user.employee[0].id
+    )
+    if Intervention.save
+      puts "Successfully saved"
+    else
+      puts "Not saved"
+    end
 
   end
+  
+
+    # POST /interventions or /interventions.json
+  def create
+    @intervention = Intervention.new(intervention_params)
+    respond_to do |format|
+      if @intervention.save
+        format.html { redirect_to root_path, notice: "Intervention was successfully created." }
+        format.json { render :show, status: :created, location: @intervention }
+      else
+        format.html { render :new, status: :unprocessable_entity }
+        format.json { render json: @intervention.errors, status: :unprocessable_entity }
+      end
+    end
+    #puts "###########"
+    # puts @intervention.customerId
+    #ZendeskAPI::Ticket.create!(@client,
+    #  :subject => " from ",
+    #  :requester => {"name": @intervention.customer_id},
+    #  :comment => { :value =>
+    #  "The contact  from company can be reached at  and at .  has a project named  which would require contribution from Rocket Elevators.
+    #    Attached Message: "},
+    #  :type => "question",
+    #  :priority => "urgent")
+  end
+  
+  # GET /interventions/
+  #def submit
+
+  #end
   #def name_with_initial
   #  "#{first_name.first}. #{last_name}"
   #end
@@ -74,7 +134,7 @@ class InterventionsController < InheritedResources::Base
   private
 
     def intervention_params
-      params.permit(:author, :customerId, :buildingId, :batteryId, :columnId, :elevatorId, :employeeId, :start_date, :end_date, :result, :report, :status)
+      params.permit(:author_id, :customer_id, :building_id, :battery_id, :column_id, :elevator_id, :employee_id, :start_date, :end_date, :result, :report, :status, :intervention)
     end
     # .require(:intervention)
 end
