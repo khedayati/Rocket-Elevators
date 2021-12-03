@@ -47,9 +47,9 @@ $(window.showSelectedValue = function(source){
       url: "/get_batteries/" + source,
       
       success: function(data3, status){
-        console.log("source = ", source);
-        console.log(data3);
-        console.log("data[0]['battery_type'] = ", data3[0]['battery_type']);
+        //console.log("source = ", source);
+        console.log("data3 column", data3);
+        //console.log("data[0]['battery_type'] = ", data3[0]['battery_type']);
 
         $('#battery_id').find('option').not(':first').remove();
         for (var i = 0; i < data3.length; i++) {
@@ -76,7 +76,7 @@ $(window.showSelectedValue = function(source){
       
       success: function(data3, status){
         //console.log("source = ", source);
-        console.log(data3);
+        console.log("data3 battery", data3);
         //console.log("data[0]['battery_type'] = ", data3[0]['battery_type']);
   
         var array = [];        
@@ -108,7 +108,7 @@ $(window.showSelectedValue = function(source){
       
       success: function(data3, status){
         //console.log("source = ", source);
-        console.log(data3);
+        console.log("data3 column", data3);
         //console.log("data[0]['elevator_id'] = ", data3[0]['battery_type']);
   
         var array = [];        
@@ -141,22 +141,57 @@ $(window.showSelectedValue = function(source){
       
       success: function(data3, status){
         //console.log("source = ", source);
-        console.log(data3);
+        console.log("data3 elevator", data3);
         //console.log("data[0]['battery_type'] = ", data3[0]['battery_type']);
   
         var array = [];        
         //$("#buildings_id1").empty();
         var key_out = [];
 
-        /*
-        $('#battery_select').find('option').not(':first').remove();
+        
+        //$('#elevator_id').find('option').not(':first').remove();
         for (var i = 0; i < data3.length; i++) {
-          $('#battery_select').append($('<option/>', { 
+          $('#elevator_id').append($('<option/>', { 
             key: data3[i].id,
-            text : data3[i].battery_type
+            text : data3[i].serial_number
           }));
         }
-        */
+        
+      }
+    });
+    
+  });
+
+
+
+  $('#fictionnal_id').change(function() {
+    console.log("elevator changed");
+    //$('#columns_id1').removeAttr('hidden');
+    var data2 = {};
+    var data = null;
+    $.ajax({
+      data3: data2,
+      dataType: 'json',
+      url: "/get_elevators/" + source,
+      
+      success: function(data3, status){
+        //console.log("source = ", source);
+        //console.log("data3 elevator", data3);
+        //console.log("data[0]['battery_type'] = ", data3[0]['battery_type']);
+  
+        var array = [];        
+        //$("#buildings_id1").empty();
+        var key_out = [];
+
+        
+        $('#elevator_id').find('option').not(':first').remove();
+        for (var i = 0; i < data3.length; i++) {
+          $('#elevator_id').append($('<option/>', { 
+            key: data3[i].id,
+            text : data3[i].serial_number
+          }));
+        }
+        
       }
     });
     

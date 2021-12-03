@@ -65,6 +65,25 @@
         </div>
 
 
+        <!-- 6 -->
+        <div class="row">
+          <div id="ficts_id1" class="col-md-10 col-sm-10" hidden="">
+            <%= f.label :fictionnal_id_label, 'Fictionnal' %>
+            <br><br>
+            <%= f.collection_select(:fictionnal_id, Elevator.all, :id, :id, options = {include_blank: "Please select a source..."}) %> 
+          </div>
+        </div>
+
+        <!-- 7 -->
+        <div class="row">
+          <div id="employees_id1" class="col-md-10 col-sm-10">
+            <%= f.label :employee_id_label, 'Employee' %>
+            <br><br>
+            <%= f.collection_select(:employee_id, Employee.all, :id, :id, options = {include_blank: "Please select a source..."}) %> 
+          </div>
+        </div>
+
+
         </fieldset>
         <br><br>
       

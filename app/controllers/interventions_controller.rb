@@ -116,7 +116,7 @@ class InterventionsController < InheritedResources::Base
     puts "###########"
     # puts @intervention.customerId
     ZendeskAPI::Ticket.create!(@client,
-      :subject => " from #{@customer.customer_id}" ,
+      :subject => " from #{@customer.user_id}" ,
       :requester => {"name": @intervention.customer_id},
       :comment => { :value =>
       "The contact  from company can be reached at  and at .  has a project named  which would require contribution from Rocket Elevators.
