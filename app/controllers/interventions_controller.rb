@@ -78,6 +78,9 @@ class InterventionsController < InheritedResources::Base
   end
 
   def submit
+    puts "params"
+    puts params
+    @employee_working = current_user.employee[0]
     @intervention = Intervention.new(
       customer_id: params[:customer_id],
       building_id: params[:building_id],
@@ -87,7 +90,7 @@ class InterventionsController < InheritedResources::Base
       elevator_id: params[:elevator_id],
       author_id: current_user.employee[0].id
     )
-    if Intervention.save
+    if @intervention.save
       puts "Successfully saved"
     else
       puts "Not saved"
@@ -98,7 +101,22 @@ class InterventionsController < InheritedResources::Base
 
     # POST /interventions or /interventions.json
   def create
+
     @intervention = Intervention.new(intervention_params)
+
+    #@employee_first_name = current_user.first_name
+    #@employee_last_name = current_user.last_name
+
+
+    puts "params"
+    puts params
+
+    if @intervention.save
+      puts "Successfully saved"
+    else
+      puts "Not saved"
+    end
+
     respond_to do |format|
       if @intervention.save
         format.html { redirect_to root_path, notice: "Intervention was successfully created." }
@@ -108,13 +126,27 @@ class InterventionsController < InheritedResources::Base
         format.json { render json: @intervention.errors, status: :unprocessable_entity }
       end
     end
+    @customer = Customer.find(@intervention.customer_id)
+    #@employee = Employee.find(@intervention.employee_id)
+    @employee = Employee.find(params[:employee_id])
     puts "###########"
+    #Rails.logger.debug params.inspect
+    #elevatorIDS = Elevator.find(params[:elevator_id])
+    puts "\n\n\n\n"
+    #puts elevatorIDS[0].serial_number
     # puts @intervention.customerId
     ZendeskAPI::Ticket.create!(@client,
-      :subject => " from ",
+      :subject => " from #{@customer.id}" ,
       :requester => {"name": @intervention.customer_id},
       :comment => { :value =>
-      "The contact  from company can be reached at  and at .  has a project named  which would require contribution from Rocket Elevators.
+      "Customer id: #{params[:customer_id]},
+       Building id: #{params[:building_id]},
+       Employee id: #{params[:employee_id]},
+       Employee first name: #{@employee}.first_name,
+       Employee last name: #{@employee}.last_name,
+       Battery id: #{params[:battery_id]},
+       Column id: #{params[:column_id]},
+       Elevator id: #{params[:elevator_id]}
         Attached Message: "},
       :type => "question",
       :priority => "urgent")
