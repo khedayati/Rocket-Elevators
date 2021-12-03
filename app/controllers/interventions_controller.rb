@@ -169,22 +169,21 @@ class InterventionsController < InheritedResources::Base
     puts "description"
     puts @description_intervention
     
-    
-    #ZendeskAPI::Ticket.create!(@client,
-    #  :subject => " from #{@customer.full_name_of_the_company_contact}, #{@customer.id}" ,
-    #  :requester => "name : #{@customer.full_name_of_the_company_contact}",
-    #  :comment => { :value =>
-    #  "Customer id: #{@customer.id},
-    #   Building id: #{@buildingChosen.id},
-    #   Employee id: #{@employee.id},
-    #   Employee first name: #{@employee.first_name},
-    #   Employee last name: #{{@employee.last_name}},
-    #   Battery id: #{@batteryChosen.id},
-    #   Column id: #{@columnChosen.id},
-    #   Elevator id: #{@elevatorChosen.id}
-    #    Attached Message: "},
-    #  :type => "question",
-    #  :priority => "urgent")
+    ZendeskAPI::Ticket.create!(@client,
+      :subject => " from #{@customer.full_name_of_the_company_contact}, #{@customer.id}" ,
+      :requester => "name : #{@customer.full_name_of_the_company_contact}",
+      :comment => { :value =>
+      "Customer id: #{@customer.id},
+       Building id: #{@buildingChosen.id},
+       Employee id: #{@employee.id},
+       Employee first name: #{@employee.first_name},
+       Employee last name: #{@employee.last_name},
+       Battery id: #{@batteryChosen.id},
+       Column id: #{@columnChosen.id},
+       Elevator id: #{@elevatorChosen.id}
+        Attached Message: #{@description_intervention} "},
+      :type => "question",
+      :priority => "urgent")
   end
   
   # GET /interventions/
