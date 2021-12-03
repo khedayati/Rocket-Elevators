@@ -72,7 +72,7 @@ $(window.showSelectedValue = function(source){
     $.ajax({
       data3: data2,
       dataType: 'json',
-      url: "/get_batteries/" + source,
+      url: "/get_columns/" + source,
       
       success: function(data3, status){
         //console.log("source = ", source);
