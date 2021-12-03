@@ -136,7 +136,10 @@ class InterventionsController < InheritedResources::Base
       :comment => { :value =>
       "Customer id: #{@customer.id},
        Building id: #{@intervention.building_id},
-       Employee id: #{params[:employee_id]}
+       Employee id: #{params[:employee_id]},
+       Battery id: #{params[:battery_id]},
+       Column id: #{params[:column_id]},
+       Elevator id: #{params[:elevator_id]}
         Attached Message: "},
       :type => "question",
       :priority => "urgent")
