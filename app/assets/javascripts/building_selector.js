@@ -18,7 +18,7 @@ $(window.showSelectedValue = function(source){
       success: function(data, status){
         console.log("source = ", source);
         console.log(data);
-        console.log("data[0]['full_name_of_the_building_administrator'] = ", data[0]['full_name_of_the_building_administrator']);
+        console.log("data[0]['id'] = ", data[0]['id']);
   
         var array = [];        
         //$("#buildings_id1").empty();
@@ -28,7 +28,7 @@ $(window.showSelectedValue = function(source){
         for (var i = 0; i < data.length; i++) {
           $('#building_id').append($('<option/>', { 
             key: data[i].id,
-            text : data[i].full_name_of_the_building_administrator
+            text : data[i].id
           }));
         }
       }

@@ -1,3 +1,4 @@
+# ADD email and password
 # COMMAND
 
 rake wh:make_table  => drop if exist and create tables in psql database
@@ -10,6 +11,12 @@ rake wh:reset => Does all the previous rake command in order
 
 rake final:setup  => does rake db:reset and rake final:setup
 
+## URL for zendesk
+https://khashayarcodeboxx.zendesk.com
+
+The credentials to access this website are:
+email: @outlook.com
+password:
 
 # Week8
 ## Fact_Intervention
