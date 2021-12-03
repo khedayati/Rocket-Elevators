@@ -121,7 +121,7 @@ $(window.showSelectedValue = function(source){
         for (var i = 0; i < data3.length; i++) {
           $('#elevator_id').append($('<option/>', { 
             key: data3[i].id,
-            text : data3[i].serial_number
+            text : data3[i].id
           }));
         }
       }
