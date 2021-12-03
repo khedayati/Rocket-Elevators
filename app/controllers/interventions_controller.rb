@@ -80,7 +80,7 @@ class InterventionsController < InheritedResources::Base
   def submit
     puts "params"
     puts params
-    @employee_working = current_user.employees[0]
+    @employee_working = current_user.employee[0]
     @intervention = Intervention.new(
       customer_id: params[:customer_id],
       building_id: params[:building_id],
@@ -103,6 +103,9 @@ class InterventionsController < InheritedResources::Base
   def create
 
     @intervention = Intervention.new(intervention_params)
+
+    #@employee_first_name = current_user.first_name
+    #@employee_last_name = current_user.last_name
 
 
     puts "params"
@@ -132,7 +135,8 @@ class InterventionsController < InheritedResources::Base
       :requester => {"name": @intervention.customer_id},
       :comment => { :value =>
       "Customer id: #{@customer.id},
-       Building id: #{@intervention.building_id}
+       Building id: #{@intervention.building_id},
+       Employee id: #{params[:employee_id]}
         Attached Message: "},
       :type => "question",
       :priority => "urgent")
