@@ -16,7 +16,7 @@
     <!-- %= form_for Intervention.new, method: :post, remote: true do |f| % -->
       <% if !@interventions.nil?  %>
         
-        </br></br>
+       
         <!-- 1 -->
         <%= f.label :building_id_label, 'Customers' %>
         <fieldset id="fieldsetId">
@@ -80,6 +80,14 @@
             <%= f.label :employee_id_label, 'Employee' %>
             <br><br>
             <%= f.collection_select(:employee_id, Employee.all, :id, :id, options = {include_blank: "Please select a source..."}) %> 
+          </div>
+        </div>
+
+        
+        <div class="row">
+          <div id="description_id1" class="col-md-8 col-sm-8">
+            <%= f.label :description_label, 'Description of the intervention' %>
+            <input id="description_input" class="form-control" type="text">
           </div>
         </div>
 
