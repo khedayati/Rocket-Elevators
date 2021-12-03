@@ -108,16 +108,16 @@ class InterventionsController < InheritedResources::Base
         format.json { render json: @intervention.errors, status: :unprocessable_entity }
       end
     end
-    #puts "###########"
+    puts "###########"
     # puts @intervention.customerId
-    #ZendeskAPI::Ticket.create!(@client,
-    #  :subject => " from ",
-    #  :requester => {"name": @intervention.customer_id},
-    #  :comment => { :value =>
-    #  "The contact  from company can be reached at  and at .  has a project named  which would require contribution from Rocket Elevators.
-    #    Attached Message: "},
-    #  :type => "question",
-    #  :priority => "urgent")
+    ZendeskAPI::Ticket.create!(@client,
+      :subject => " from ",
+      :requester => {"name": @intervention.customer_id},
+      :comment => { :value =>
+      "The contact  from company can be reached at  and at .  has a project named  which would require contribution from Rocket Elevators.
+        Attached Message: "},
+      :type => "question",
+      :priority => "urgent")
   end
   
   # GET /interventions/
