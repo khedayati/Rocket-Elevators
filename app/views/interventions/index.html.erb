@@ -17,6 +17,7 @@
       <% if !@interventions.nil?  %>
         
         </br></br>
+        <!-- 1 -->
         <%= f.label :building_id_label, 'Customers' %>
         <fieldset id="fieldsetId">
         <div class="row">
@@ -27,7 +28,7 @@
           </div>
         </div>
         
-
+        <!-- 2 -->
         <div class="row">
           <div id="buildings_id1" class="col-md-10 col-sm-10" hidden="">
             <%= f.label :building_id_label, 'Building' %>
@@ -36,7 +37,7 @@
           </div>
         </div>
 
-
+        <!-- 3 -->
         <div class="row">
           <div id="batteries_id1" class="col-md-10 col-sm-10" hidden="">
             <%= f.label :battery_id_label, 'Battery' %>
@@ -45,12 +46,21 @@
           </div>
         </div>
 
-
+        <!-- 4 -->
         <div class="row">
           <div id="columns_id1" class="col-md-10 col-sm-10" hidden="">
-            <%= f.label :column_id_label, 'Battery' %>
+            <%= f.label :column_id_label, 'Column' %>
             <br><br>
             <%= f.collection_select(:column_id, Column.all, :id, :id, options = {include_blank: "Please select a source..."}) %> 
+          </div>
+        </div>
+
+        <!-- 5 -->
+        <div class="row">
+          <div id="elevators_id1" class="col-md-10 col-sm-10" hidden="">
+            <%= f.label :elevator_id_label, 'Elevator' %>
+            <br><br>
+            <%= f.collection_select(:elevator_id, Elevator.all, :id, :id, options = {include_blank: "Please select a source..."}) %> 
           </div>
         </div>
 

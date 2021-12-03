@@ -78,6 +78,9 @@ class InterventionsController < InheritedResources::Base
   end
 
   def submit
+    puts "params"
+    puts params
+    @employee_working = current_user.employees[0]
     @intervention = Intervention.new(
       customer_id: params[:customer_id],
       building_id: params[:building_id],
@@ -108,10 +111,12 @@ class InterventionsController < InheritedResources::Base
         format.json { render json: @intervention.errors, status: :unprocessable_entity }
       end
     end
+    @customer = Customer.find(@intervention.customer_id)
+    @employee = Employee.find(@intervention.employee_id)
     puts "###########"
     # puts @intervention.customerId
     ZendeskAPI::Ticket.create!(@client,
-      :subject => " from ",
+      :subject => " from #{@customer.customer_id}" ,
       :requester => {"name": @intervention.customer_id},
       :comment => { :value =>
       "The contact  from company can be reached at  and at .  has a project named  which would require contribution from Rocket Elevators.
