@@ -33,5 +33,5 @@
 
 #dotenv
 /config/local_env.yml
-.env.local
+#.env.local
 
