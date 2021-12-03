@@ -1,7 +1,7 @@
 $(window.showSelectedValue = function(source){
 
 // Customers  
-  $('#col_select').change(function() {
+  $('#customer_id').change(function() {
     //console.log("VALUE ON CHANGE = ", this.value);
     //$('#buildings_id1').show();
     //console.log($('#buildings_id1').attr('id'));
@@ -24,9 +24,9 @@ $(window.showSelectedValue = function(source){
         //$("#buildings_id1").empty();
         var key_out = [];
 
-        $('#build_select').find('option').not(':first').remove();
+        $('#building_id').find('option').not(':first').remove();
         for (var i = 0; i < data.length; i++) {
-          $('#build_select').append($('<option/>', { 
+          $('#building_id').append($('<option/>', { 
             key: data[i].id,
             text : data[i].full_name_of_the_building_administrator
           }));
@@ -36,7 +36,7 @@ $(window.showSelectedValue = function(source){
   });
 
   // buildings
-  $('#build_select').change(function() {
+  $('#building_id').change(function() {
     console.log("build_select changed");
     $('#batteries_id1').removeAttr('hidden');
     var data2 = {};
@@ -51,9 +51,9 @@ $(window.showSelectedValue = function(source){
         console.log(data3);
         console.log("data[0]['battery_type'] = ", data3[0]['battery_type']);
 
-        $('#battery_select').find('option').not(':first').remove();
+        $('#battery_id').find('option').not(':first').remove();
         for (var i = 0; i < data3.length; i++) {
-          $('#battery_select').append($('<option/>', { 
+          $('#battery_id').append($('<option/>', { 
             key: data3[i].id,
             text : data3[i].battery_type
           }));
@@ -64,7 +64,7 @@ $(window.showSelectedValue = function(source){
   });
   
 // batteries
-  $('#batteries_id1').change(function() {
+  $('#battery_id').change(function() {
     console.log("batteies_select changed");
     $('#columns_id1').removeAttr('hidden');
     var data2 = {};
@@ -83,9 +83,9 @@ $(window.showSelectedValue = function(source){
         //$("#buildings_id1").empty();
         var key_out = [];
 
-        $('#column_select').find('option').not(':first').remove();
+        $('#column_id').find('option').not(':first').remove();
         for (var i = 0; i < data3.length; i++) {
-          $('#column_select').append($('<option/>', { 
+          $('#column_id').append($('<option/>', { 
             key: data3[i].id,
             text : data3[i].id
           }));
@@ -127,6 +127,38 @@ $(window.showSelectedValue = function(source){
     
   });
 
+
+
+  $('#column_select').change(function() {
+    console.log("column_select changed");
+    //$('#columns_id1').removeAttr('hidden');
+    var data2 = {};
+    var data = null;
+    $.ajax({
+      data3: data2,
+      dataType: 'json',
+      url: "/get_columns/" + source,
+      
+      success: function(data3, status){
+        console.log("source = ", source);
+        console.log(data3);
+        console.log("data[0]['battery_type'] = ", data3[0]['battery_type']);
+  
+        var array = [];        
+        //$("#buildings_id1").empty();
+        var key_out = [];
+
+        $('#battery_select').find('option').not(':first').remove();
+        for (var i = 0; i < data3.length; i++) {
+          $('#battery_select').append($('<option/>', { 
+            key: data3[i].id,
+            text : data3[i].battery_type
+          }));
+        }
+      }
+    });
+    
+  });
 
 /*
     console.log("showSelectedValue");

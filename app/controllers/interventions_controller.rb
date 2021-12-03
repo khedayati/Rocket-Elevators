@@ -33,10 +33,24 @@ class InterventionsController < InheritedResources::Base
     render json: @buildings
   end
 
+  def get_columns
+    #@interventions = Intervention.all
+    @columns = Column.where(battery_id: params[:idOfColumn]) # idOfColumn columnId
+    render json: @columns
+    puts "COLUMNS"
+    puts @columns
+  end
+
   def get_batteries
     @interventions = Intervention.all
     @batteries = Battery.where(building_id: params[:idOfBuilding])
     render json: @batteries
+  end
+
+  def get_elevators
+    #@interventions = Intervention.all
+    @elevators = Elevator.where(column_id: params[:idOfElevator]) # idOfElevator elevatorId
+    render json: @elevators
   end
 
   # (_id)
@@ -44,6 +58,7 @@ class InterventionsController < InheritedResources::Base
     @interventions = Intervention.all
     @customers = Customer.all
     @customers = Battery.all
+    @employees = Employee.all
     #@buildings = Building.all
     @buildings = Building.where(customerId: params[:customer_id])
 
@@ -61,6 +76,24 @@ class InterventionsController < InheritedResources::Base
   def new
     @intervention = Intervention.new
   end
+
+  def submit
+    @intervention = Intervention.new(
+      customer_id: params[:customer_id],
+      building_id: params[:building_id],
+      battery_id: params[:battery_id],
+      column_id: params[:column_id],
+      employee_id: params[:employee_id],
+      elevator_id: params[:elevator_id],
+      author_id: current_user.employee[0].id
+    )
+    if Intervention.save
+      puts "Successfully saved"
+    else
+      puts "Not saved"
+    end
+
+  end
   
 
     # POST /interventions or /interventions.json
@@ -75,26 +108,22 @@ class InterventionsController < InheritedResources::Base
         format.json { render json: @intervention.errors, status: :unprocessable_entity }
       end
     end
-    puts "###########"
-    puts "@intervention.author "
-    puts @intervention.author
-    puts "@intervention.customerId "
-    puts @intervention.customerId
+    #puts "###########"
     # puts @intervention.customerId
-    ZendeskAPI::Ticket.create!(@client,
-      :subject => "#{@intervention.customerId} from #{@intervention.author}",
-      :requester => {"name": @intervention.customerId},
-      :comment => { :value =>
-      "The contact #{@intervention.author} from company can be reached at #{@intervention.buildingId} and at #{@intervention.columnId}. #{@intervention.employeeId} has a project named #{@intervention.elevatorId} which would require contribution from Rocket Elevators.
-        Attached Message: #{@intervention.report}"},
-      :type => "question",
-      :priority => "urgent")
+    #ZendeskAPI::Ticket.create!(@client,
+    #  :subject => " from ",
+    #  :requester => {"name": @intervention.customer_id},
+    #  :comment => { :value =>
+    #  "The contact  from company can be reached at  and at .  has a project named  which would require contribution from Rocket Elevators.
+    #    Attached Message: "},
+    #  :type => "question",
+    #  :priority => "urgent")
   end
   
   # GET /interventions/
-  def submit
+  #def submit
 
-  end
+  #end
   #def name_with_initial
   #  "#{first_name.first}. #{last_name}"
   #end
@@ -105,7 +134,7 @@ class InterventionsController < InheritedResources::Base
   private
 
     def intervention_params
-      params.permit(:author, :customerId, :buildingId, :batteryId, :columnId, :elevatorId, :employeeId, :start_date, :end_date, :result, :report, :status)
+      params.permit(:author_id, :customer_id, :building_id, :battery_id, :column_id, :elevator_id, :employee_id, :start_date, :end_date, :result, :report, :status, :intervention)
     end
     # .require(:intervention)
 end
