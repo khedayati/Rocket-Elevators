@@ -1,7 +1,7 @@
 <p id="notice"><%= notice %></p>
 
-<!-- section id="quote" -->
-  <!-- div class="container" -->
+<section id="quote">
+  <div class="container">
     <header class="text-center mb-60">
       <h1>Interventions</h1>
     </header>
@@ -42,7 +42,7 @@
           <div id="batteries_id1" class="col-md-10 col-sm-10" hidden="">
             <%= f.label :battery_id_label, 'Battery' %>
             <br><br>
-            <%= f.collection_select(:battery_id, Battery.all, :id, :battery_type, options = {include_blank: "Please select a source..."}) %> 
+            <%= f.collection_select(:battery_id, Battery.all, :id, :id, options = {include_blank: "Please select a source..."}) %> 
           </div>
         </div>
 
@@ -96,8 +96,8 @@
       <!-- /div -->
       <!-- /div -->
 
-  <!-- /div -->
-<!-- /section -->
+  </div>
+</section>
 
 <script>
 /*

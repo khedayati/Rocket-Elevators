@@ -55,7 +55,7 @@ $(window.showSelectedValue = function(source){
         for (var i = 0; i < data3.length; i++) {
           $('#battery_id').append($('<option/>', { 
             key: data3[i].id,
-            text : data3[i].battery_type
+            text : data3[i].id
           }));
         }
       }
@@ -104,13 +104,15 @@ $(window.showSelectedValue = function(source){
     $.ajax({
       data3: data2,
       dataType: 'json',
-      url: "/get_columns/" + source,
+      url: "/get_elevators/" + source,
       
       success: function(data3, status){
         //console.log("source = ", source);
         console.log("data3 column", data3);
         //console.log("data[0]['elevator_id'] = ", data3[0]['battery_type']);
-  
+
+        //console.log("data3[0]['serial_number'] = ", data3[0][0]['serial_number']);
+        //console.log("data3['serial_number'] = ", data3['serial_number']);
         var array = [];        
         //$("#buildings_id1").empty();
         var key_out = [];

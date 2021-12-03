@@ -127,16 +127,23 @@ class InterventionsController < InheritedResources::Base
       end
     end
     @customer = Customer.find(@intervention.customer_id)
-    @employee = Employee.find(@intervention.employee_id)
+    #@employee = Employee.find(@intervention.employee_id)
+    @employee = Employee.find(params[:employee_id])
     puts "###########"
+    #Rails.logger.debug params.inspect
+    #elevatorIDS = Elevator.find(params[:elevator_id])
+    puts "\n\n\n\n"
+    #puts elevatorIDS[0].serial_number
     # puts @intervention.customerId
     ZendeskAPI::Ticket.create!(@client,
       :subject => " from #{@customer.id}" ,
       :requester => {"name": @intervention.customer_id},
       :comment => { :value =>
-      "Customer id: #{@customer.id},
-       Building id: #{@intervention.building_id},
+      "Customer id: #{params[:customer_id]},
+       Building id: #{params[:building_id]},
        Employee id: #{params[:employee_id]},
+       Employee first name: #{@employee}.first_name,
+       Employee last name: #{@employee}.last_name,
        Battery id: #{params[:battery_id]},
        Column id: #{params[:column_id]},
        Elevator id: #{params[:elevator_id]}
