@@ -132,7 +132,7 @@ class InterventionsController < InheritedResources::Base
       :requester => {"name": @intervention.customer_id},
       :comment => { :value =>
       "Customer id: #{@customer.id},
-       Building id: 
+       Building id: #{@intervention.building_id}
         Attached Message: "},
       :type => "question",
       :priority => "urgent")
