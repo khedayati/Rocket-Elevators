@@ -2,6 +2,7 @@ require "net/http"
 require "uri"
 require "json"
 class InterventionsController < InheritedResources::Base
+  skip_before_action :verify_authenticity_token
 
   # GET /interventions or /interventions.json
   def index
@@ -110,6 +111,7 @@ class InterventionsController < InheritedResources::Base
 
     puts "params"
     puts params
+    byebug
 
     if @intervention.save
       puts "Successfully saved"

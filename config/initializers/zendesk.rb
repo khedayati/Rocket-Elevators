@@ -3,14 +3,14 @@ def initialize
   @client = ZendeskAPI::Client.new do |config|
     # Mandatory:
 
-    config.url = "https://codeboxmtl.zendesk.com/api/v2" # e.g. https://yoursubdomain.zendesk.com/api/v2
+    config.url = "https://khashayarcodeboxx.zendesk.com/api/v2" # e.g. https://yoursubdomain.zendesk.com/api/v2 https://codeboxmtl.zendesk.com
 
     # Basic / Token Authentication
     config.username = ENV['ZENDESK_EMAIL'] 
 
     # Choose one of the following depending on your authentication choice
     config.token = ENV['ZENDESK_API_KEY']
-    config.password = ENV['ZENDESK_ACCOUNT_PW']
+    #config.password = ENV['ZENDESK_ACCOUNT_PW']
 
     # OAuth Authentication
     # config.access_token = "your OAuth access token"
