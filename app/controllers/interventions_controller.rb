@@ -23,7 +23,7 @@ class InterventionsController < InheritedResources::Base
   end
 
   def get_columns
-    @columns = Column.where(battery_id: params[:idOfColumn]) # idOfColumn columnId
+    @columns = Column.where(battery_id: params[:idOfColumn])
     render json: @columns
     puts "COLUMNS"
     puts @columns
@@ -36,7 +36,7 @@ class InterventionsController < InheritedResources::Base
   end
 
   def get_elevators
-    @elevators = Elevator.where(column_id: params[:idOfElevator]) # idOfElevator elevatorId
+    @elevators = Elevator.where(column_id: params[:idOfElevator])
     render json: @elevators
   end
 
@@ -118,8 +118,8 @@ class InterventionsController < InheritedResources::Base
     @description_intervention = params[:report]
     
     ZendeskAPI::Ticket.create!(@client,
-      :subject => " from #{@customer.full_name_of_the_company_contact}, #{@customer.id}" ,
-      :requester => "name : #{@customer.full_name_of_the_company_contact}",
+      :subject => "#{@customer.full_name_of_the_company_contact}, #{@customer.id}" ,
+      :requester => "name : #{@customer.full_name_of_the_company_contact} from #{@customer.company_name}",
       :comment => { :value =>
       "Customer id: #{@customer.id},
        Building id: #{@buildingChosen.id},
@@ -140,17 +140,9 @@ class InterventionsController < InheritedResources::Base
     end
 
   end
-  
-  # GET /interventions/
-  #def submit
-
-  #end
-  #def name_with_initial
-  #  "#{first_name.first}. #{last_name}"
-  #end
+    
   # GET /quotes/1/edit
   def edit; end
-
 
   private
 

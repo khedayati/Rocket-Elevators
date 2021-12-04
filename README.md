@@ -5,5 +5,5 @@
 https://khashayarcodeboxx.zendesk.com
 
 The credentials to access this website are:
-email: @outlook.com
-password:
+email: jns1ma 'AT' outlook com
+password: 
