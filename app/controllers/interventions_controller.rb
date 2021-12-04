@@ -2,7 +2,7 @@ require "net/http"
 require "uri"
 require "json"
 class InterventionsController < InheritedResources::Base
-  attr_accessor :date, :time
+  attr_accessor :date, :time, :start_date
   skip_before_action :verify_authenticity_token
 
   # GET /interventions or /interventions.json
