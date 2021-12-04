@@ -2,6 +2,7 @@ require "net/http"
 require "uri"
 require "json"
 class InterventionsController < InheritedResources::Base
+  attr_accessor :date, :time
   skip_before_action :verify_authenticity_token
 
   # GET /interventions or /interventions.json
@@ -99,6 +100,8 @@ class InterventionsController < InheritedResources::Base
 
   end
   
+  def dateCreationForm
+  end
 
     # POST /interventions or /interventions.json
   def create
@@ -113,15 +116,11 @@ class InterventionsController < InheritedResources::Base
     puts params
     #byebug
 
-    if @intervention.save
-      puts "Successfully saved"
-    else
-      puts "Not saved"
-    end
+
 
     respond_to do |format|
       if @intervention.save
-        format.html { redirect_to root_path, notice: "Intervention was successfully created." }
+        format.html { redirect_to root_path, notice: "" }
         format.json { render :show, status: :created, location: @intervention }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -133,57 +132,74 @@ class InterventionsController < InheritedResources::Base
     @employee = Employee.find(params[:employee_id])
     
     puts "###########"
-    puts "employee:"
-    puts @employee
+    #@dateBegin = Intervention.find(params[:])
+    #puts "employee:"
+    #puts @employee
     #byebug
-    puts "first name: "
-    puts @employee.first_name
-    puts "last name: "
-    puts @employee.last_name
+    #puts "first name: "
+    #puts @employee.first_name
+    #puts "last name: "
+    #puts @employee.last_name
     #Rails.logger.debug params.inspect
     #elevatorIDS = Elevator.find(params[:elevator_id])
+    #@intervention.update(Building.merge(start_date: Time.now))
     puts "\n\n\n\n"
     #puts elevatorIDS[0].serial_number
     # puts @intervention.customerId
-    puts "customer id"
-    puts @customer.id
-    puts @customer.full_name_of_the_company_contact
-
+    #puts "customer id"
+    #puts @customer.id
+    #puts @customer.full_name_of_the_company_contact
+    @dateCreation = params[:date]
+    puts "date of creation"
+    puts params[:created_at]
+    puts params[:date]
+    puts @dateCreation
+    puts @intervention.created_at
+    @start_date = @intervention.created_at
+    puts "start_date"
+    puts @start_date
     @buildingChosen = Building.find(params[:building_id])
-    puts "building id"
-    puts @buildingChosen
+    #puts "building id"
+    #puts @buildingChosen
 
     @batteryChosen = Battery.find(params[:battery_id])
-    puts "battery id"
-    puts @batteryChosen
+    #puts "battery id"
+    #puts @batteryChosen
     
     @columnChosen = Column.find(params[:column_id])
-    puts "column id if specified"
-    puts @columnChosen
+    #puts "column id if specified"
+    #puts @columnChosen
 
     @elevatorChosen = Elevator.find(params[:elevator_id])
-    puts "elevator id if specified"
-    puts @elevatorChosen
+    #puts "elevator id if specified"
+    #puts @elevatorChosen
 
     @description_intervention = params[:report]
-    puts "description"
-    puts @description_intervention
+    #puts "description"
+    #puts @description_intervention
     
-    ZendeskAPI::Ticket.create!(@client,
-      :subject => " from #{@customer.full_name_of_the_company_contact}, #{@customer.id}" ,
-      :requester => "name : #{@customer.full_name_of_the_company_contact}",
-      :comment => { :value =>
-      "Customer id: #{@customer.id},
-       Building id: #{@buildingChosen.id},
-       Employee id: #{@employee.id},
-       Employee first name: #{@employee.first_name},
-       Employee last name: #{@employee.last_name},
-       Battery id: #{@batteryChosen.id},
-       Column id: #{@columnChosen.id},
-       Elevator id: #{@elevatorChosen.id}
-        Attached Message: #{@description_intervention} "},
-      :type => "question",
-      :priority => "urgent")
+    #ZendeskAPI::Ticket.create!(@client,
+    #  :subject => " from #{@customer.full_name_of_the_company_contact}, #{@customer.id}" ,
+    #  :requester => "name : #{@customer.full_name_of_the_company_contact}",
+    #  :comment => { :value =>
+    #  "Customer id: #{@customer.id},
+    #   Building id: #{@buildingChosen.id},
+    #   Employee id: #{@employee.id},
+    #   Employee first name: #{@employee.first_name},
+    #   Employee last name: #{@employee.last_name},
+    #   Battery id: #{@batteryChosen.id},
+    #   Column id: #{@columnChosen.id},
+    #   Elevator id: #{@elevatorChosen.id}
+    #    Attached Message: #{@description_intervention} "},
+    #  :type => "question",
+    #  :priority => "urgent")
+
+    if @intervention.save
+      puts "Successfully saved"
+    else
+      puts "Not saved"
+    end
+
   end
   
   # GET /interventions/
