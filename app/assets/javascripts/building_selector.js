@@ -1,6 +1,6 @@
 $(window.showSelectedValue = function(source){
 
-// Customers  2 change building
+// 2- Customers  change building
   $('#customer_id').change(function() {
     
     $('#buildings_id1').removeAttr('hidden');
@@ -26,7 +26,7 @@ $(window.showSelectedValue = function(source){
     });
   });
 
-  // buildings 3 change battery
+  // 3- Buildings change battery
   $('#building_id').change(function() {
     console.log("build_select changed");
     $('#batteries_id1').removeAttr('hidden');
@@ -54,7 +54,7 @@ $(window.showSelectedValue = function(source){
     
   });
   
-// batteries 4 change column
+// 4- batteries change column
   $('#battery_id').change(function() {
     console.log("batteies_select changed");
     $('#columns_id1').removeAttr('hidden');
@@ -81,7 +81,7 @@ $(window.showSelectedValue = function(source){
     
   });
 
-// Column 5 change elevators
+// 5- Column change elevators
   $('#column_id').change(function() {
     console.log("column_select changed");
     $('#elevators_id1').removeAttr('hidden');
@@ -110,7 +110,7 @@ $(window.showSelectedValue = function(source){
   });
 
 
-
+  // 6- Elevators
   $('#elevator_id').change(function() {
     console.log("elevator changed");
     //$('#columns_id1').removeAttr('hidden');
