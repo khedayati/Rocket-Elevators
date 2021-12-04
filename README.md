@@ -35,10 +35,10 @@ api/interventions/update-to-pending/{id}
 Here's an example with [Postman](https://www.postman.com/):
 
 1. PUT method in Postman
-![First step in Postman](https://github.com/khedayati/Rocket_Rest_Consolidation/blob/master/images/rest_api_1.png?raw=true)
+![First step in Postman](https://github.com/khedayati/Rocket-Elevators-Foundation/blob/master/images/rest_api_1.png?raw=true)
 
 2. Response
-![Second step in Postman](https://github.com/khedayati/Rocket_Rest_Consolidation/blob/master/images/rest_api_2.png?raw=true)
+![Second step in Postman](https://github.com/khedayati/Rocket-Elevators-Foundation/blob/master/images/rest_api_2.png?raw=true)
 
 <br>
 
