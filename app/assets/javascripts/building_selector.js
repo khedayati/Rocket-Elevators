@@ -152,13 +152,14 @@ $(window.showSelectedValue = function(source){
 
         
         //$('#elevator_id').find('option').not(':first').remove();
+        /*
         for (var i = 0; i < data3.length; i++) {
           $('#elevator_id').append($('<option/>', { 
             key: data3[i].id,
             text : data3[i].serial_number
           }));
         }
-        
+        */
       }
     });
     
