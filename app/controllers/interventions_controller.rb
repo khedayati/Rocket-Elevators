@@ -190,7 +190,7 @@ class InterventionsController < InheritedResources::Base
     #   Battery id: #{@batteryChosen.id},
     #   Column id: #{@columnChosen.id},
     #   Elevator id: #{@elevatorChosen.id}
-    #    Attached Message: #{@description_intervention} "},
+    #   Attached Message: #{@description_intervention} "},
     #  :type => "question",
     #  :priority => "urgent")
 
