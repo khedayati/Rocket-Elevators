@@ -15,28 +15,14 @@ class InterventionsController < InheritedResources::Base
     @intervention = Intervention.new
   end
 
-
-  # (idOfCustomer)
   def get_buildings
     @interventions = Intervention.all
-    #@customers = Customer.all
-    #@buildings = Building.all
-    #@buildings = Building.where(customerId: params[:customer_id])
-
     #byebug
-    #customer_buildings = Building.where(customer_id: @buildings)
-    #customer_buildings = Building.where(customer_id: idOfCustomer) #
-    
-    #respond_to do |format|
-    #  format.json { render json:  @customer_buildings }
-    #end
-    #@buildings = User.where(params[:id])
     @buildings = Building.where(customer_id: params[:idOfCustomer])
     render json: @buildings
   end
 
   def get_columns
-    #@interventions = Intervention.all
     @columns = Column.where(battery_id: params[:idOfColumn]) # idOfColumn columnId
     render json: @columns
     puts "COLUMNS"
@@ -50,28 +36,21 @@ class InterventionsController < InheritedResources::Base
   end
 
   def get_elevators
-    #@interventions = Intervention.all
     @elevators = Elevator.where(column_id: params[:idOfElevator]) # idOfElevator elevatorId
     render json: @elevators
   end
 
-  # (_id)
   def interventions
     @interventions = Intervention.all
     @customers = Customer.all
     @customers = Battery.all
     @employees = Employee.all
-    #@buildings = Building.all
     @buildings = Building.where(customerId: params[:customer_id])
-
     #byebug
     customer_buildings = Building.where(customer_id: 3)
-    
-
     respond_to do |format|
       format.json { render :json => @customer_buildings }
     end
-
   end
   
   # GET /interventions/new
@@ -103,21 +82,12 @@ class InterventionsController < InheritedResources::Base
   def dateCreationForm
   end
 
-    # POST /interventions or /interventions.json
+  # POST /interventions or /interventions.json
   def create
-
     @intervention = Intervention.new(intervention_params)
-
-    #@employee_first_name = current_user.first_name
-    #@employee_last_name = current_user.last_name
-
-
-    puts "params"
-    puts params
+    #puts "params"
+    #puts params
     #byebug
-
-
-
     respond_to do |format|
       if @intervention.save
         format.html { redirect_to root_path, notice: "" }
@@ -128,71 +98,40 @@ class InterventionsController < InheritedResources::Base
       end
     end
     @customer = Customer.find(@intervention.customer_id)
-    #@employee = Employee.find(@intervention.employee_id)
     @employee = Employee.find(params[:employee_id])
     
     puts "###########"
-    #@dateBegin = Intervention.find(params[:])
-    #puts "employee:"
-    #puts @employee
     #byebug
-    #puts "first name: "
-    #puts @employee.first_name
-    #puts "last name: "
-    #puts @employee.last_name
-    #Rails.logger.debug params.inspect
-    #elevatorIDS = Elevator.find(params[:elevator_id])
-    #@intervention.update(Building.merge(start_date: Time.now))
     puts "\n\n\n\n"
-    #puts elevatorIDS[0].serial_number
-    # puts @intervention.customerId
-    #puts "customer id"
-    #puts @customer.id
-    #puts @customer.full_name_of_the_company_contact
     @dateCreation = params[:date]
-    puts "date of creation"
-    puts params[:created_at]
-    puts params[:date]
-    puts @dateCreation
-    puts @intervention.created_at
+    
     @start_date = @intervention.created_at
-    puts "start_date"
-    puts @start_date
+    
     @buildingChosen = Building.find(params[:building_id])
-    #puts "building id"
-    #puts @buildingChosen
-
+    
     @batteryChosen = Battery.find(params[:battery_id])
-    #puts "battery id"
-    #puts @batteryChosen
     
     @columnChosen = Column.find(params[:column_id])
-    #puts "column id if specified"
-    #puts @columnChosen
 
     @elevatorChosen = Elevator.find(params[:elevator_id])
-    #puts "elevator id if specified"
-    #puts @elevatorChosen
 
     @description_intervention = params[:report]
-    #puts "description"
-    #puts @description_intervention
     
-    #ZendeskAPI::Ticket.create!(@client,
-    #  :subject => " from #{@customer.full_name_of_the_company_contact}, #{@customer.id}" ,
-    #  :requester => "name : #{@customer.full_name_of_the_company_contact}",
-    #  :comment => { :value =>
-    #  "Customer id: #{@customer.id},
-    #   Building id: #{@buildingChosen.id},
-    #   Employee id: #{@employee.id},
-    #   Employee first name: #{@employee.first_name},
-    #   Employee last name: #{@employee.last_name},
-    #   Battery id: #{@batteryChosen.id},
-    #   Column id: #{@columnChosen.id},
-    #   Elevator id: #{@elevatorChosen.id}
-    #   Attached Message: #{@description_intervention} "},
-    #  :type => "question",
-    #  :priority => "urgent")
+    ZendeskAPI::Ticket.create!(@client,
+      :subject => " from #{@customer.full_name_of_the_company_contact}, #{@customer.id}" ,
+      :requester => "name : #{@customer.full_name_of_the_company_contact}",
+      :comment => { :value =>
+      "Customer id: #{@customer.id},
+       Building id: #{@buildingChosen.id},
+       Employee id: #{@employee.id},
+       Employee first name: #{@employee.first_name},
+       Employee last name: #{@employee.last_name},
+       Battery id: #{@batteryChosen.id},
+       Column id: #{@columnChosen.id},
+       Elevator id: #{@elevatorChosen.id}
+       Attached Message: #{@description_intervention} "},
+      :type => "question",
+      :priority => "urgent")
 
     if @intervention.save
       puts "Successfully saved"
