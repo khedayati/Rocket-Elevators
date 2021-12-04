@@ -5,20 +5,14 @@
     <header class="text-center mb-60">
       <h1>Interventions</h1>
     </header>
-    <!-- div class="interventionz" -->
     
-      <!-- div class="row" -->
-
-        <!-- FORM -->
-        <!-- div class="col-md-8 col-sm-8" -->
-
+    <!-- FORM  for the interventions controller -->
     <%= form_for @intervention.to_s, method: :post, remote: true do |f| %>
       <%= hidden_field_tag 'authenticity_token', form_authenticity_token %>
     <!-- %= form_for Intervention.new, method: :post, remote: true do |f| % -->
       <% if !@interventions.nil?  %>
         
-       
-        <!-- 1 -->
+        <!-- 1st dropdown -->
         <%= f.label :building_id_label, 'Customers' %>
         <fieldset id="fieldsetId">
         <div class="row">
@@ -29,7 +23,7 @@
           </div>
         </div>
         
-        <!-- 2 -->
+        <!-- 2nd dropdown -->
         <div class="row">
           <div id="buildings_id1" class="col-md-10 col-sm-10" hidden="">
             <%= f.label :building_id_label, 'Building' %>
@@ -38,7 +32,7 @@
           </div>
         </div>
 
-        <!-- 3 -->
+        <!-- 3rd dropdown -->
         <div class="row">
           <div id="batteries_id1" class="col-md-10 col-sm-10" hidden="">
             <%= f.label :battery_id_label, 'Battery' %>
@@ -47,7 +41,7 @@
           </div>
         </div>
 
-        <!-- 4 -->
+        <!-- 4th dropdown -->
         <div class="row">
           <div id="columns_id1" class="col-md-10 col-sm-10" hidden="">
             <%= f.label :column_id_label, 'Column' %>
@@ -56,7 +50,7 @@
           </div>
         </div>
 
-        <!-- 5 -->
+        <!-- 5th dropdown -->
         <div class="row">
           <div id="elevators_id1" class="col-md-10 col-sm-10" hidden="">
             <%= f.label :elevator_id_label, 'Elevator' %>
@@ -65,8 +59,7 @@
           </div>
         </div>
 
-
-        <!-- 6 -->
+        <!-- 6th dropdown -->
         <div class="row">
           <div id="ficts_id1" class="col-md-10 col-sm-10" hidden="">
             <%= f.label :fictionnal_id_label, 'Fictionnal' %>
@@ -75,7 +68,7 @@
           </div>
         </div>
 
-        <!-- 7 -->
+        <!-- 7th dropdown -->
         <div class="row">
           <div id="employees_id1" class="col-md-10 col-sm-10">
             <%= f.label :employee_id_label, 'Employee' %>
@@ -84,13 +77,10 @@
           </div>
         </div>
 
-        
         <div class="row">
           <div id="description_id1" class="col-md-8 col-sm-8">
             <%= f.label :description_label, 'Description of the intervention' %>
             <br>
-            <!-- input id="report" class="form-control" type="text" -->
-            <!-- %= f.input id="report" class="form-control" type="text" %-->
             <%= f.text_field :report, :class => "form-control" %> <!-- :start_date, as: :date, html5: true -->
             <div class="row" hidden="">
               <%= f.text_field :start_date, :class => "form-control" %>
@@ -116,41 +106,4 @@
   </div>
 </section>
 
-<script>
-/*
-  $('#col_select').change(function() {
-      console.log("VALUE ON CHANGE = ", this.value);
-      $('#buildings_id1').show();
-    });
-
-  $('#col_select').on("change").function() {
-
-    $('#buildings_id').show();
-    console.log("showSelectedValue");
-
-    $.ajax({
-      dataType: 'json',
-      url: "/get_buildings/" + source,
-      data: data,
-      success: function(data, status){
-          console.log("source = ", source);
-          console.log(data);
-          console.log("data[0]['full_name_of_the_building_administrator'] = ", data[0]['full_name_of_the_building_administrator']);
-*/
-/*
-          var $el = $("#col_select");
-            //$el.empty(); // remove old options
-            //$.each(data, function(key, ) {
-            //$el.append($("<option></option>").attr("value", data[0].full_name_of_the_building_administrator).text(key));
-            $el.append($("<option></option>"));
-            $('#col_select').html
-          //});
-
-
-      }});
-  }
-  */
-</script>
-
 <%= javascript_include_tag 'building_selector' %>
-<!-- %= link_to 'New Intervention', new_intervention_path % -->
