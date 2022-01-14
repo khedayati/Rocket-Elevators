@@ -5,7 +5,7 @@ set :repo_url,        'git@github.com:khedayati/Rocket-Elevators.git'
 set :application,     'Rocket_Elevators'
 
 # If using Digital Ocean's Ruby on Rails Marketplace framework, your username is 'rails'
-set :user,            'rails'
+set :user,            'karl'
 set :puma_threads,    [4, 16]
 set :puma_workers,    0
 
