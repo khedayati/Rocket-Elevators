@@ -1,4 +1,4 @@
-=begin # server-based syntax
+# server-based syntax
 # ======================
 # Defines a single server with a list of roles and multiple properties.
 # You can define all roles on a single server, or split them:
@@ -68,4 +68,3 @@ role :db,  %w{ubuntu@147.182.222.221}
 #     auth_methods: %w(publickey password)
 #     # password: "please use keys"
 #   }
- =end
