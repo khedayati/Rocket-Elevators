@@ -1,7 +1,7 @@
 # Change these
 server '147.182.222.221', port: 22, roles: [:web, :app, :db], primary: true
 
-set :repo_url,        'git@github.com:khedayati/Rocket-Elevators-Foundation.git'
+set :repo_url,        'git@github.com:khedayati/Rocket-Elevators.git'
 set :application,     'Rocket_Elevators'
 
 # If using Digital Ocean's Ruby on Rails Marketplace framework, your username is 'rails'
