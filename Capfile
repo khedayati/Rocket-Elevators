@@ -16,6 +16,15 @@ install_plugin Capistrano::Puma
 # For a Digital Ocean deploy, 'Daemon' will work
 # Documentation: https://github.com/seuros/capistrano-puma
 # From the documentation: "If you using puma daemonized (not supported in Puma 5+)""
+
+require "rvm1/capistrano3"
+# require "capistrano/rvm"
+# require "capistrano/rbenv"
+# require "capistrano/chruby"
+# require "capistrano/rails/assets"
+# require "capistrano/rails/migrations"
+# require "capistrano/passenger"
+install_plugin Capistrano::Puma::Nginx
 install_plugin Capistrano::Puma::Daemon
 
 # Loads custom tasks from `lib/capistrano/tasks' if you have any defined.
