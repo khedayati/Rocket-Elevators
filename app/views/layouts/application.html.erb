@@ -12,6 +12,9 @@
   </head>
 
   <body>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=<%= ENV['GA_MEASUREMENT_ID'] %>"></script>
+    <%= javascript_include_tag 'analytics', async: true %>
+    
     <%= render "layouts/header" %>
     <%= yield %>
     <%= render "layouts/footer" %>

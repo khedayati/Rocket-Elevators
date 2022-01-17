@@ -234,7 +234,8 @@ function actionListener(){
 
 // Corporate and Hybrid Calculation
     }else if(value=="corporate" || value== "hybride"){
-        let verify;
+        //let verify;
+        var verify;
         if(value=="corporate"){
             
             verify = verifyInput(2);

@@ -3804,8 +3804,6 @@ body.menu-vertical #mainMenu.sidebar-vertical .navbar-collapse>ul.nav.navbar-nav
 	#page-menu.page-menu-light ul li {
 		border-left:rgba(0,0,0,0.05) 1px solid;
 	}
-	#page-menu.page-menu-light ul li:hover {
-	}
 	#page-menu.page-menu-light ul li a {
 		color:#151515;
 	}
@@ -4008,12 +4006,6 @@ body.menu-vertical #mainMenu.sidebar-vertical .navbar-collapse>ul.nav.navbar-nav
 	content: "\f102";
 }
 
-<<<<<<< HEAD
-=======
-
-
-
-
 
 
 
@@ -4149,14 +4141,6 @@ body.menu-vertical #mainMenu.sidebar-vertical .navbar-collapse>ul.nav.navbar-nav
 }
 
 
-
-
-
-
-
->>>>>>> 1e98fad22e53cab3d8ad55e66df103f0c159310c
-/** Misc
- **************************************************************** **/
 .img-hover img {
 	-webkit-transition: all .400s;
 	   -moz-transition: all .400s;
