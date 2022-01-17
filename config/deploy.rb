@@ -1,5 +1,5 @@
 # Change these
-server '137.184.219.194', port: 22, roles: [:web, :app, :db], primary: true
+server '167.99.155.30', port: 22, roles: [:web, :app, :db], primary: true
 
 set :repo_url,        'git@github.com:khedayati/Rocket-Elevators.git'
 set :application,     'Rocket_Elevators'
