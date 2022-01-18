@@ -69,8 +69,8 @@ group :development do
   gem 'rvm1-capistrano3', require: false
   #gem 'capistrano3-puma'
 
-
-  gem 'capistrano',         require: false
+  gem 'capistrano', '~> 3.16', require: false
+  #gem 'capistrano',         require: false
   gem 'capistrano-rvm',     require: false
   gem 'capistrano-rails',   require: false
   gem 'capistrano-bundler', require: false
