@@ -26,6 +26,7 @@ set :puma_worker_timeout, nil
 set :puma_init_active_record, true  # Change to false when not using ActiveRecord
 set :linked_files, fetch(:linked_files, []).push('config/database.yml')
 set :linked_files, fetch(:linked_files, []).push('config/local_env.yml')
+set :linked_files, fetch(:linked_files, []).push('config/newrelic.yml')
 #set :rvm_type , :system
 #set :rvm_custom_path, "/usr/share/rvm"
 
