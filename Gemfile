@@ -66,15 +66,15 @@ group :development do
   #gem 'capistrano-rvm',     require: false
   #gem 'capistrano-rails', '~> 1.4', require: false
   #gem 'capistrano-bundler', '>= 1.1.0'
-  gem 'rvm1-capistrano3', require: false
   #gem 'capistrano3-puma'
 
-  gem 'capistrano', '~> 3.16', require: false
-  #gem 'capistrano',         require: false
+  #gem 'capistrano', '~> 3.16', require: false
+  gem 'capistrano',         require: false
   gem 'capistrano-rvm',     require: false
   gem 'capistrano-rails',   require: false
   gem 'capistrano-bundler', require: false
   gem 'capistrano3-puma',   require: false
+  gem 'rvm1-capistrano3', require: false
 end
 
 group :test do
