@@ -333,7 +333,7 @@
 										<h3>3495 Rue Saint Dominique Building</h3>
 										<ul class="list-inline categories m-0">
 											<li><a href="#">First Place $2000</a></li>
-											<li><a href="#">Montreal's Elevator Contest 2020</a></li>
+											<li><a href="#">Montreal''s Elevator Contest 2020</a></li>
 										</ul>
 									</div>
 
@@ -746,7 +746,7 @@
 						<div class="testimonial" id ="CEO"	>
 							<figure>
 								<!-- img class="rounded" src="assets/ceo.jpg" alt="" / -->
-								<%= image_tag "ceo.jpeg"%>
+								<%= image_tag "ceo.jpeg" :class => "rounded" %>
 							</figure>
 							<div class="testimonial-content p-0">
 								<p class="lead">Our talented CEO</p>
@@ -759,7 +759,7 @@
 						<div class="testimonial" id="employee">
 							<figure>
 								<!-- img class="rounded" src="assets/employee-of-the-month.jpg" alt="" / -->
-								<%= image_tag "employee-of-the-month.jpg" %>
+								<%= image_tag "employee-of-the-month.jpg"  :class => "rounded" %>
 							</figure>
 							<div class="testimonial-content p-0">
 								<p class="lead">Our Employee of The Month</p>
@@ -810,8 +810,8 @@
 					<div class="owl-carousel owl-padding-10 buttons-autohide controlls-over" data-plugin-options='{"singleItem": false, "items":"4", "autoPlay": 4000, "navigation": true, "pagination": false}'>
 						<div class="img-hover">
 							<a href="https://newjerseyglobe.com/governor/elevator-constructors-union-backs-murphy/">
-								<img class="img-fluid" src="https://38golu1f1ik01c9tej2um08s-wpengine.netdna-ssl.com/wp-content/uploads/2021/09/Elevator-Constructors-Local-One.jpg" alt="" style="height: 200px;" >
-								
+								<!-- img class="img-fluid" src="https://38golu1f1ik01c9tej2um08s-wpengine.netdna-ssl.com/wp-content/uploads/2021/09/Elevator-Constructors-Local-One.jpg" alt="" style="height: 200px;"  -->
+							<%= image_tag "https://38golu1f1ik01c9tej2um08s-wpengine.netdna-ssl.com/wp-content/uploads/2021/09/Elevator-Constructors-Local-One.jpg", :class => "img-fluid", :style => "height: 200px" %>	
 							</a>
 
 							<h4 class="text-left mt-20"><a href="https://newjerseyglobe.com/governor/elevator-constructors-union-backs-murphy/">Elevator Constructors Union Backs Murphy</a></h4>
@@ -826,7 +826,9 @@
 						<!-- new 2 -->
 						<div class="img-hover">
 							<a href="https://www.globenewswire.com/news-release/2021/09/21/2300448/0/en/The-Global-Smart-Elevator-Market-is-expected-to-grow-by-5-14-bn-during-2021-2025-progressing-at-a-CAGR-of-8-14-during-the-forecast-period.html">
-								<img class="img-fluid" src="https://elevatortoday.com/wp-content/uploads/2021/05/KONE-Lane_Red-Dot-Awards-2021_01-1068x924.jpg" style="height: 200px;" alt="">
+								<!-- img class="img-fluid" src="https://elevatortoday.com/wp-content/uploads/2021/05/KONE-Lane_Red-Dot-Awards-2021_01-1068x924.jpg" style="height: 200px;" alt="" -->
+
+							<%= image_tag "https://elevatortoday.com/wp-content/uploads/2021/05/KONE-Lane_Red-Dot-Awards-2021_01-1068x924.jpg", :class => "img-fluid", :style => "height: 200px" %>	
 							</a>
 
 							<h4 class="text-left mt-20"><a href="https://www.globenewswire.com/news-release/2021/09/21/2300448/0/en/The-Global-Smart-Elevator-Market-is-expected-to-grow-by-5-14-bn-during-2021-2025-progressing-at-a-CAGR-of-8-14-during-the-forecast-period.html">The Global Smart Elevator Market is expected to grow by $ 5.14 bn during 2021-2025</a></h4>
@@ -842,7 +844,8 @@
 						<!-- new 3 -->
 						<div class="img-hover">
 							<a href="https://press.thebig5.ae/exhibitor-news-french-elevator-manufacturer-sodimas-gears-up-to-participate-in-the-big-5-show">
-								<img class="img-fluid" src="https://cdn.uc.assets.prezly.com/5a257482-a429-4d4d-9dba-1afbd9166be4/-/crop/2624x1180/0,232/-/preview/-/resize/1108x/-/quality/best/-/format/auto/" style="height: 200px;" alt="">
+								<!-- img class="img-fluid" src="https://cdn.uc.assets.prezly.com/5a257482-a429-4d4d-9dba-1afbd9166be4/-/crop/2624x1180/0,232/-/preview/-/resize/1108x/-/quality/best/-/format/auto/" style="height: 200px;" alt="" -->
+							<%= image_tag "https://cdn.uc.assets.prezly.com/5a257482-a429-4d4d-9dba-1afbd9166be4/-/crop/2624x1180/0,232/-/preview/-/resize/1108x/-/quality/best/-/format/auto/", :class => "img-fluid", :style => "height: 200px" %>	
 							</a>
 
 							<h4 class="text-left mt-20"><a href="https://press.thebig5.ae/exhibitor-news-french-elevator-manufacturer-sodimas-gears-up-to-participate-in-the-big-5-show">French elevator manufacturer Sodimas gears up to participate in The Big 5 show</a></h4>
@@ -858,7 +861,9 @@
 						<!-- new 4 -->
 						<div class="img-hover">
 							<a href="https://www.fool.com/investing/2021/08/24/3-reasons-to-buy-otis-stock/">
-								<img class="img-fluid" src="https://g.foolcdn.com/image/?url=https%3A//g.foolcdn.com/editorial/images/639768/escalator.jpg&w=2000&op=resize" style="height: 200px;" alt="">
+								<!-- img class="img-fluid" src="https://g.foolcdn.com/image/?url=https%3A//g.foolcdn.com/editorial/images/639768/escalator.jpg&w=2000&op=resize" style="height: 200px;" alt="" -->
+                
+							<%= image_tag "https://g.foolcdn.com/image/?url=https%3A//g.foolcdn.com/editorial/images/639768/escalator.jpg&w=2000&op=resize", :class => "img-fluid", :style => "height: 200px" %>	
 							</a>
 
 							<h4 class="text-left mt-20"><a href="https://www.fool.com/investing/2021/08/24/3-reasons-to-buy-otis-stock/">3 Reasons to Buy Otis Stock</a></h4>
